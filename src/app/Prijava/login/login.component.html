@@ -1,0 +1,27 @@
+<form  [formGroup]="form" >
+    <div >
+      <h1>Ulogujte se</h1>
+      <p>Popunite polja</p>
+      <hr>
+
+
+      <label for="prezime"><b>Korisnicko ime</b></label>
+      <input type="text" formControlName="username" placeholder="Unesite korisnicko ime" name="korisnickoIme" id="korisnickoIme" required>
+
+
+      <label for="lozinka"><b>Lozinka</b></label>
+      <input type="text" formControlName="password"  placeholder="Unesite lozinku" name="lozinka" id="lozinka" required>
+
+      <select name="uloge" id="uloge">
+        <option value="admin">Admin</option>
+        <option value="menadzer">Menadzer</option>
+        <option value="navijac">Navijac</option>
+      </select>
+      
+
+     
+  
+      <button type="submit" >Ulogujte se</button>
+    </div>
+  </form>
+

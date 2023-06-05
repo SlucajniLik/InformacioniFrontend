@@ -1,0 +1,48 @@
+<form [formGroup]="form" >
+    <div >
+      <h1>Registrujte se</h1>
+      <p>Popunite polja</p>
+      <hr>
+  
+      <label for="ime"><b>Ime</b></label>
+      <input type="text"  formControlName="name"  placeholder="Unesite ime" name="ime" id="ime" required>
+  
+
+      <label for="prezime"><b>Prezime</b></label>
+      <input type="text"     formControlName="surname"   placeholder="Unesite prezime" name="prezime" id="prezime" required>
+
+
+      <label for="prezime"><b>Korisnicko ime</b></label>
+      <input type="text"   formControlName="username" placeholder="Unesite korisnicko ime" name="korisnickoIme" id="korisnickoIme" required>
+
+
+      <label for="lozinka"><b>Lozinka</b></label>
+      <input type="text"   formControlName="password" placeholder="Unesite lozinku" name="lozinka" id="lozinka" required>
+
+
+      <select formControlName="role"  >
+        <option [ngValue]="'d'" >Izaberite ulogu</option>
+    <option [ngValue]="'admin'" >Admin</option>
+    <option [ngValue]="'menadzer'" >Mendzer</option>
+    <option [ngValue]="'navijac'" >Navijac</option>
+    </select>
+      <button (click)="register()">Registrujte se</button>
+
+ <div  *ngIf="Name?.touched" >
+   <div  [style.backgroundColor]="'red'" *ngIf="Name?.errors?.['required']"  >Polje za ime je obavezno</div>
+</div>
+
+<div  *ngIf="Surname?.touched" >
+    <div  [style.backgroundColor]="'red'" *ngIf="Surname?.errors?.['required']"  >Polje za prezime je obavezno</div>
+</div>
+
+<div  *ngIf="Username?.touched" >
+    <div  [style.backgroundColor]="'red'" *ngIf="Username?.errors?.['required']"  >Polje za korisnkicko ime je obavezno</div>
+</div>
+
+<div  *ngIf="Password?.touched" >
+    <div  [style.backgroundColor]="'red'" *ngIf="Password?.errors?.['required']"  >Polje za lozinku je obavezno</div>
+ </div>
+
+    </div>
+  </form>
