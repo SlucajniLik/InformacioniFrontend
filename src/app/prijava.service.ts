@@ -18,6 +18,19 @@ registerAdmin(user:Korisnik)
 return this.http.post(this.url+"registerAdmin",user)
 }
 
+registerManager(user:Korisnik)
+{
+return this.http.post(this.url+"registerManager",user)
+}
+
+registerMember(user:Korisnik)
+{
+return this.http.post(this.url+"registerMemmerFan",user)
+}
+
+
+
+
 loginAdmin(user:LoginKorisnik)
 {
 return this.http.post(this.url2,user,{responseType: 'text'})

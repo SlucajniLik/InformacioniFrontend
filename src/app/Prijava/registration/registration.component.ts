@@ -81,8 +81,12 @@ this.uloga=this.Role?.value
   if(this.uloga=='admin'){
     this.prijavaserv.registerAdmin(this.korisnik).subscribe()
   }
-else{
-  console.log(this.uloga)
+else if(this.uloga=='menadzer'){
+  this.prijavaserv.registerManager(this.korisnik).subscribe()
+  
+}
+else if(this.uloga=='navijac'){
+  this.prijavaserv.registerMember(this.korisnik).subscribe()
 }
 }
 

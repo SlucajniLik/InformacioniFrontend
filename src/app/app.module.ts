@@ -9,6 +9,9 @@ import { LoginComponent } from './Prijava/login/login.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DodajTimoveComponent } from './Administrator/dodaj-timove/dodaj-timove.component';
+import { DodajIgraceComponent } from './Menadzer/dodaj-igrace/dodaj-igrace.component';
+import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-rezultata.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavigationComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    DodajTimoveComponent,
+    DodajIgraceComponent,
+    PregledRezultataComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot([
       { path: '', component:LoginComponent },
       { path: 'register', component: RegistrationComponent },
+      { path: 'dodajTimove', component: DodajTimoveComponent },
+      { path: 'dodajIgrace', component: DodajIgraceComponent },
+      { path: 'pregledRezultata', component: PregledRezultataComponent },
     ])
   ],
   providers: [],
