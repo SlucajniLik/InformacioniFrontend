@@ -13,6 +13,8 @@ url="https://localhost:7166/"
 url2="https://localhost:7166/loginAdmin"
 url3="https://localhost:7166/loginManager"
 url4="https://localhost:7166/loginMemberFan"
+
+token=localStorage.getItem("token");
 registerAdmin(user:Korisnik)
 {
 return this.http.post(this.url+"registerAdmin",user)
@@ -46,5 +48,20 @@ loginMember(user:LoginKorisnik)
 {
 return this.http.post(this.url4,user,{responseType: 'text'})
 }
+
+
+
+getInformation()
+{
+return this.http.get(this.url+"getInformation",{
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+  },
+})
+}
+
+
+
 
 }
