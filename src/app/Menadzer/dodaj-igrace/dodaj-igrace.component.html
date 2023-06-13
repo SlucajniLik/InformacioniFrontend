@@ -1,1 +1,24 @@
-<p>Menadzer</p>
+<form  [formGroup]="form">
+    <input placeholder="Unesite ime" formControlName="name">
+    <input placeholder="Unesite prezime" formControlName="surname">
+    <input placeholder="Unesite datum" formControlName="dateBirth">
+    <button (click)="addPlayer()"  >Posalji</button>
+    </form>
+    
+    <diV  *ngIf="Name?.touched"  >
+      <div   [style.backgroundColor]="'red'"  *ngIf="Name?.errors?.['required']"  >Polje za ime je obavezno</div>
+
+     </diV>
+    
+    
+    
+     <diV  *ngIf="Surname?.touched"  >
+       <div  [style.backgroundColor]="'red'"  *ngIf="Surname?.errors?.['minlength']"  >Polje za prezime mora imati makar 2 karaktera</div>
+     </diV>
+    
+    
+    
+    
+     <diV  *ngIf="DateBirth?.touched"  >
+       <div  [style.backgroundColor]="'red'"  *ngIf="DateBirth?.errors?.['maxlength']"  >Polje za datum mora imati max 3 kraktera</div>
+     </diV>

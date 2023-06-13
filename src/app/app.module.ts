@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DodajTimoveComponent } from './Administrator/dodaj-timove/dodaj-timove.component';
 import { DodajIgraceComponent } from './Menadzer/dodaj-igrace/dodaj-igrace.component';
 import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-rezultata.component';
+import { ListaTimovaComponent } from './Administrator/lista-timova/lista-timova.component';
+import { ListaIgracaComponent } from './Menadzer/lista-igraca/lista-igraca.component';
+
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-r
     LoginComponent,
     DodajTimoveComponent,
     DodajIgraceComponent,
-    PregledRezultataComponent
+    PregledRezultataComponent,
+    ListaTimovaComponent,
+    ListaIgracaComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -33,8 +39,16 @@ import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-r
     RouterModule.forRoot([
       { path: '', component:LoginComponent },
       { path: 'register', component: RegistrationComponent },
-      { path: 'dodajTimove', component: DodajTimoveComponent },
+//admin
       { path: 'dodajIgrace', component: DodajIgraceComponent },
+      { path: 'listaIgraca', component: ListaIgracaComponent },
+     
+
+
+//menadzer
+      { path: 'dodajTimove', component: DodajTimoveComponent },
+      { path: 'listaTimova', component: ListaTimovaComponent },
+
       { path: 'pregledRezultata', component: PregledRezultataComponent },
     ])
   ],

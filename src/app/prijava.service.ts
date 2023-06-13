@@ -10,9 +10,7 @@ export class PrijavaService {
 
   constructor(private http:HttpClient) { }
 url="https://localhost:7166/"
-url2="https://localhost:7166/loginAdmin"
-url3="https://localhost:7166/loginManager"
-url4="https://localhost:7166/loginMemberFan"
+
 
 token=localStorage.getItem("token");
 registerAdmin(user:Korisnik)
@@ -35,18 +33,18 @@ return this.http.post(this.url+"registerMemmerFan",user)
 
 loginAdmin(user:LoginKorisnik)
 {
-return this.http.post(this.url2,user,{responseType: 'text'})
+return this.http.post(this.url+"loginAdmin",user,{responseType: 'text'})
 }
 
 loginManager(user:LoginKorisnik)
 {
-return this.http.post(this.url3,user,{responseType: 'text'})
+return this.http.post(this.url+"loginManager",user,{responseType: 'text'})
 }
 
 
 loginMember(user:LoginKorisnik)
 {
-return this.http.post(this.url4,user,{responseType: 'text'})
+return this.http.post(this.url+"loginMemberFan",user,{responseType: 'text'})
 }
 
 

@@ -1,6 +1,23 @@
 
-    <ul>
+   
+          <ul *ngIf="isLogedIn()==false"  style="background-color: orange
+          ;">
         <a     [routerLink]="['']"     routerLinkActive="active">Logovanje</a>
         <a     [routerLink]="['register']" routerLinkActive="active">Registracija</a> 
-        <button  (click)="logOut()"  >Odjavi se</button>
       </ul>
+      <!--menadzer-->
+      <ul  style="background-color: orange
+      ;">
+        
+        <a     [routerLink]="['dodajIgrace']" routerLinkActive="active">Dodaj igrace </a> 
+        <a     [routerLink]="['listaIgraca']" routerLinkActive="active">lista Igraca</a> 
+       
+     <!--admin-->
+      <ul  style="background-color: orange
+      ;">
+        <a     [routerLink]="['dodajTimove']" routerLinkActive="active">Dodaj timove</a> 
+        <a     [routerLink]="['listaTimova']" routerLinkActive="active">Lista timov</a>
+      </ul>
+      
+        <button  (click)="logOut()"  >Odjavi se</button>
+      

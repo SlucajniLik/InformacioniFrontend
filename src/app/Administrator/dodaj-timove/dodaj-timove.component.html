@@ -1,1 +1,25 @@
-<p>{{"Ovo  je userId"+userId}}</p>
+<form  [formGroup]="form">
+    <input placeholder="Unesite ime tima" formControlName="name">
+    <input placeholder="Unesite datum" formControlName="dateOfEstablishment">
+    <input placeholder="Unesite grad" formControlName="city">
+    <input placeholder="Unesite logo" formControlName="logo">
+    <button (click)="addTeams()"  >Posalji</button>
+    </form>
+    
+    <diV  *ngIf="Name?.touched"  >
+      <div   [style.backgroundColor]="'red'"  *ngIf="Name?.errors?.['required']"  >Polje za ime je obavezno</div>
+
+     </diV>
+    
+    
+    
+     <diV  *ngIf="DateOfEstablishment?.touched"  >
+       <div  [style.backgroundColor]="'red'"  *ngIf="DateOfEstablishment?.errors?.['minlength']"  >Polje za prezime mora imati makar 2 karaktera</div>
+     </diV>
+    
+    
+    
+    
+     <diV  *ngIf="City?.touched"  >
+       <div  [style.backgroundColor]="'red'"  *ngIf="City?.errors?.['maxlength']"  >Polje za datum mora imati max 3 kraktera</div>
+     </diV>
