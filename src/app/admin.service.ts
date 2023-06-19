@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tim } from './Interfejsi/Tim';
+import { Utakmica } from './Interfejsi/Utakmica';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,41 @@ export class AdminService {
      
     },)
   }
+
+  addMatch(utakmica:Utakmica)
+  {
+  return this.http.post(this.url+"addMatch",utakmica,{
+    
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + this.token,
+     
+    },
+   
+  },)
+}
+
+
+
+getMatch()
+{
+return this.http.get(this.url+"getMatches",{
+  
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+   
+  },
+ 
+},)
+}
+
+    
+
+
+
+
+
 
 
 

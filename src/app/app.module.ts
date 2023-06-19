@@ -14,6 +14,9 @@ import { DodajIgraceComponent } from './Menadzer/dodaj-igrace/dodaj-igrace.compo
 import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-rezultata.component';
 import { ListaTimovaComponent } from './Administrator/lista-timova/lista-timova.component';
 import { ListaIgracaComponent } from './Menadzer/lista-igraca/lista-igraca.component';
+import { UnosRasporedaUtakmicaComponent } from './Administrator/unos-rasporeda-utakmica/unos-rasporeda-utakmica.component';
+import { ListaUtakmicaComponent } from './Administrator/lista-utakmica/lista-utakmica.component';
+
 
 
 
@@ -28,6 +31,9 @@ import { ListaIgracaComponent } from './Menadzer/lista-igraca/lista-igraca.compo
     PregledRezultataComponent,
     ListaTimovaComponent,
     ListaIgracaComponent,
+    UnosRasporedaUtakmicaComponent,
+    ListaUtakmicaComponent
+  
    
   ],
   imports: [
@@ -42,7 +48,8 @@ import { ListaIgracaComponent } from './Menadzer/lista-igraca/lista-igraca.compo
 //admin
       { path: 'dodajIgrace', component: DodajIgraceComponent },
       { path: 'listaIgraca', component: ListaIgracaComponent },
-     
+      { path: 'dodajRaspored', component: UnosRasporedaUtakmicaComponent },
+      { path: 'pregledRaspored', component: ListaUtakmicaComponent },
 
 
 //menadzer
