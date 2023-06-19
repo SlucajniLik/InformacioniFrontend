@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MenadzerService } from 'src/app/menadzer.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { MenadzerService } from 'src/app/menadzer.service';
 })
 export class ListaIgracaComponent {
 
-constructor(private menService:MenadzerService)
+constructor(private menService:MenadzerService,private route:ActivatedRoute)
 {
 
 
@@ -18,12 +19,12 @@ constructor(private menService:MenadzerService)
   players?:any[]
 
   ngOnInit(): void {
-    this.menService.getPlayers().subscribe(
+    this.menService.getPlayers(+this.route.snapshot.paramMap.get("id")!).subscribe(
       (res:any)=>{this.players=res
-       
+
       }
     )
-   
+
   }
 
 

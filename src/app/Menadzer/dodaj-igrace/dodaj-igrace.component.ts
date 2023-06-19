@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Igrac } from 'src/app/Interfejsi/Igrac';
 import { MenadzerService } from 'src/app/menadzer.service';
 
@@ -15,11 +16,11 @@ player:Igrac={
     ime:'',
     prezime:'',
     datumRodjenja:'',
+    idTima:0
 
 
 
 
-  
 }
 form=new FormGroup({
 name:new FormControl('',[Validators.required]),
@@ -35,19 +36,19 @@ dateBirth:new FormControl('',[Validators.minLength(3)]),
 
 
 
-constructor(private menService:MenadzerService)
+constructor(private menService:MenadzerService,private route:ActivatedRoute)
 {}
 
 
 addPlayer()
 {
-
+console.log(this.route.snapshot.paramMap.get("id")+"ffffffffffffffs")
 this.player={
- 
+
  ime:this.Name?.value!,
  prezime:this.Surname?.value!,
- datumRodjenja:this.DateBirth?.value! 
-
+ datumRodjenja:this.DateBirth?.value!,
+ idTima:+this.route.snapshot.paramMap.get("id")!,
 
 
 

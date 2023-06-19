@@ -64,6 +64,8 @@ import { MenadzerTimoviComponent } from './Menadzer/menadzer-timovi/menadzer-tim
       { path: 'pregledRezultata', component: PregledRezultataComponent },
       { path: 'listaTimova', component: ListaTimovaComponent },
       { path: 'menadzerTimovi', component:MenadzerTimoviComponent },
+      { path: 'dodajIgrace/:id', component:DodajIgraceComponent },
+      { path: 'listaIgraca/:id', component:ListaIgracaComponent },
     ])
   ],
   providers: [],

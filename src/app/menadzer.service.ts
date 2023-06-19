@@ -35,7 +35,7 @@ token=localStorage.getItem("token");
 
   getTeams()
   {
-  return this.http.get(this.url+"getTeams",{
+  return this.http.get(this.url+"getTeamsNull",{
 
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -49,9 +49,9 @@ token=localStorage.getItem("token");
 
 
 
-  getPlayers()
+  getPlayers(id:number)
     {
-    return this.http.get(this.url+"getPlayers",{
+    return this.http.get(this.url+"getPlayers/"+id,{
       headers: {
         'Access-Control-Allow-Origin': '*',
         Authorization: 'bearer ' + this.token,

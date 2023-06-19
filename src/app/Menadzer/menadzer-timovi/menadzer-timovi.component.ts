@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenadzerService } from 'src/app/menadzer.service';
 import { PrijavaService } from 'src/app/prijava.service';
 
@@ -13,7 +14,7 @@ export class MenadzerTimoviComponent {
 
   user:any
 
-  constructor(private menServ:MenadzerService,private prijavaServ:PrijavaService)
+  constructor(private menServ:MenadzerService,private prijavaServ:PrijavaService,private router:Router)
   {
 
 
@@ -57,8 +58,17 @@ export class MenadzerTimoviComponent {
 
 
 
+AddPlayer(id:number)
+{
+ this.router.navigate(["dodajIgrace/"+id])
+}
 
 
+
+ListPlayers(id:number)
+{
+ this.router.navigate(["listaIgraca/"+id])
+}
 
 
 
