@@ -49,6 +49,18 @@ console.log("tim"+id)
      this.menServ.ChoseTeam(id,this.user.userId).subscribe(
       res=>{console.log(res)}
      )
+const index=this.teams?.findIndex(t=>t.id==id)
+
+if(index!>-1)
+{
+  this.teams?.splice(index!,1)
+
+}
+
+
+
+
+
 
       }
 
