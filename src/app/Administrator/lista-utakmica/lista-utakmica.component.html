@@ -1,1 +1,28 @@
-<p>lista-utakmica works!</p>
+<table>
+
+<tr>
+<th>Tim1</th>
+<th>Tim2</th>
+<th>Datum</th>
+<th>Vreme</th>
+<th>BrojCrvenih kartona</th>
+<th>Broj Zutih kartona</th>
+<th>Rezultat</th>
+
+
+</tr>
+
+<tr   *ngFor="let i of utakmicaTim"   >
+<td>{{i.tim1}}</td>
+<td>{{i.tim2}}</td>
+<td>{{i.utakmica.datum}}</td>
+<td>{{i.utakmica.vreme}}</td>
+<td>{{i.utakmica.brCrvenihKartona}}</td>
+<td>{{i.utakmica.brZutihKartona}}</td>
+<td>{{i.utakmica.rezultat}}</td>
+<button (click)="ChangeMatchData(i.utakmica.id,i.utakmica.idTima1,i.utakmica.idTima2)"  >Izmeni podatke</button>
+</tr>
+
+
+
+</table>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { UtakmicaTim } from 'src/app/Interfejsi/UtakmicaTim';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
@@ -8,14 +11,37 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class ListaUtakmicaComponent implements OnInit {
 
-constructor(private admServ:AdminService)
+
+
+
+utakmicaTim?:any[]
+
+
+
+
+
+
+
+
+
+constructor(private admServ:AdminService,private router:Router)
 {
 
 }
   ngOnInit(): void {
-   
+
 this.admServ.getMatch().subscribe(
-  res=>console.log(res)
+  (res:any)=>{
+
+this.utakmicaTim=res
+
+
+
+
+    console.log(this.utakmicaTim)
+
+
+  }
 )
 
 
@@ -33,7 +59,17 @@ this.admServ.getMatch().subscribe(
 
 
 
+ChangeMatchData(id:number,idTim1:number,idTim2:number)
+{
 
+
+this.router.navigate(["/promeniPodatkeUtakmice/"+id+"/"+idTim1+"/"+idTim2])
+
+
+
+
+
+}
 
 
 

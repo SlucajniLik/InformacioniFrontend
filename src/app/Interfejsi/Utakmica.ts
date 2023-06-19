@@ -1,10 +1,6 @@
 
 export interface Utakmica
 {
-
-
-
-    
     datum:string;
     vreme:string;
     rezultat:string;

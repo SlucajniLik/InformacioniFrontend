@@ -12,10 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { DodajTimoveComponent } from './Administrator/dodaj-timove/dodaj-timove.component';
 import { DodajIgraceComponent } from './Menadzer/dodaj-igrace/dodaj-igrace.component';
 import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-rezultata.component';
-import { ListaTimovaComponent } from './Administrator/lista-timova/lista-timova.component';
+import { ListaTimovaComponent } from './Menadzer/lista-timova/lista-timova.component';
 import { ListaIgracaComponent } from './Menadzer/lista-igraca/lista-igraca.component';
 import { UnosRasporedaUtakmicaComponent } from './Administrator/unos-rasporeda-utakmica/unos-rasporeda-utakmica.component';
 import { ListaUtakmicaComponent } from './Administrator/lista-utakmica/lista-utakmica.component';
+import { IzmeniPodatkeUtakmiceComponent } from './Administrator/izmeni-podatke-utakmice/izmeni-podatke-utakmice.component';
+import { ListaRezultataComponent } from './Administrator/lista-rezultata/lista-rezultata.component';
+import { MenadzerTimoviComponent } from './Menadzer/menadzer-timovi/menadzer-timovi.component';
+
 
 
 
@@ -32,9 +36,12 @@ import { ListaUtakmicaComponent } from './Administrator/lista-utakmica/lista-uta
     ListaTimovaComponent,
     ListaIgracaComponent,
     UnosRasporedaUtakmicaComponent,
-    ListaUtakmicaComponent
-  
-   
+    ListaUtakmicaComponent,
+    IzmeniPodatkeUtakmiceComponent,
+    ListaRezultataComponent,
+    MenadzerTimoviComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -50,13 +57,13 @@ import { ListaUtakmicaComponent } from './Administrator/lista-utakmica/lista-uta
       { path: 'listaIgraca', component: ListaIgracaComponent },
       { path: 'dodajRaspored', component: UnosRasporedaUtakmicaComponent },
       { path: 'pregledRaspored', component: ListaUtakmicaComponent },
-
-
+      { path: 'promeniPodatkeUtakmice/:id/:idTim1/:idTim2', component: IzmeniPodatkeUtakmiceComponent },
+      { path: 'rezultatiTimova', component: ListaRezultataComponent },
 //menadzer
       { path: 'dodajTimove', component: DodajTimoveComponent },
-      { path: 'listaTimova', component: ListaTimovaComponent },
-
       { path: 'pregledRezultata', component: PregledRezultataComponent },
+      { path: 'listaTimova', component: ListaTimovaComponent },
+      { path: 'menadzerTimovi', component:MenadzerTimoviComponent },
     ])
   ],
   providers: [],

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Tim } from 'src/app/Interfejsi/Tim';
+import { Component } from '@angular/core';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
-  selector: 'app-lista-timova',
-  templateUrl: './lista-timova.component.html',
-  styleUrls: ['./lista-timova.component.css']
+  selector: 'app-lista-rezultata',
+  templateUrl: './lista-rezultata.component.html',
+  styleUrls: ['./lista-rezultata.component.css']
 })
-export class ListaTimovaComponent implements OnInit {
+export class ListaRezultataComponent {
+
+
+
 
 constructor(private admServ:AdminService)
 {
@@ -23,9 +25,5 @@ teams?:any[]
     )
 
   }
-
-
-
-
 
 }

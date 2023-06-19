@@ -1,0 +1,23 @@
+<form  [formGroup]="form" >
+  <div >
+    <h1>Ulogujte se</h1>
+    <p>Popunite polja</p>
+    <hr>
+
+
+
+    <input type="text" formControlName="result" placeholder="Unesite rezultat" name="korisnickoIme" id="korisnickoIme" required>
+
+
+    <input type="text" formControlName="redCard"  placeholder="Unesite broj crvenih kartona" name="lozinka" id="lozinka" required>
+    <input type="text" formControlName="yellowCard"  placeholder="Unesite broj zutih kartona" name="lozinka" id="lozinka" required>
+
+
+
+
+
+    <button (click)="EditDataMatch()" >Ulogujte se</button>
+  </div>
+</form>
+
+

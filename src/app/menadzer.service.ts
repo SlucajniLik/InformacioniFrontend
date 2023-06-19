@@ -21,6 +21,34 @@ token=localStorage.getItem("token");
   }
 
 
+  ChoseTeam(id:number,idMenadzera:number)
+  {
+  return this.http.put(this.url+"choseTeam/"+id+"/"+idMenadzera,"",{
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + this.token,
+    },
+  })
+  }
+
+
+
+  getTeams()
+  {
+  return this.http.get(this.url+"getTeams",{
+
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + this.token,
+
+    },
+
+  },)
+}
+
+
+
+
   getPlayers()
     {
     return this.http.get(this.url+"getPlayers",{
@@ -34,6 +62,19 @@ token=localStorage.getItem("token");
 
 
 
+
+  getManagerTeams(id:number)
+  {
+  return this.http.get(this.url+"getTeamsManager/"+id,{
+
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + this.token,
+
+    },
+
+  },)
+}
 
 
 

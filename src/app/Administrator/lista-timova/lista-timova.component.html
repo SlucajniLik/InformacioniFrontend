@@ -1,6 +1,18 @@
-<div  *ngFor="let team of teams" style="background-color: red;" >
-<p>Ime tima je:{{team.naziv}}</p>
-<p>Datum osnivanja je:{{team.datumOsnivanja}}</p>
-<p>Grad je :{{team.grad}}</p>
-<p>Logo je:{{team.logo}}</p>
-</div>
+<table>
+<tr>
+<th>Ime tima:</th>
+<th>Datum osnivanja:</th>
+
+<th>Grad:</th>
+<th>Logo:</th>
+</tr>
+<tr  *ngFor="let team of teams" style="background-color: red;"  >
+  <td>{{team.naziv}}</td>
+  <td>{{team.datumOsnivanja}}</td>
+  <td>{{team.grad}}</td>
+  <td>{{team.logo}}</td>
+
+</tr>
+
+</table>
+

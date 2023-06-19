@@ -1,25 +1,27 @@
 
-   
+
           <ul *ngIf="isLogedIn()==false"  style="background-color: orange
           ;">
         <a     [routerLink]="['']"     routerLinkActive="active">Logovanje</a>
-        <a     [routerLink]="['register']" routerLinkActive="active">Registracija</a> 
+        <a     [routerLink]="['register']" routerLinkActive="active">Registracija</a>
       </ul>
       <!--menadzer-->
       <ul  style="background-color: orange
       ;">
-        
-        <a     [routerLink]="['dodajIgrace']" routerLinkActive="active">Dodaj igrace </a> 
-        <a     [routerLink]="['listaIgraca']" routerLinkActive="active">lista Igraca</a> 
-       
+
+        <a     [routerLink]="['dodajIgrace']" routerLinkActive="active">Dodaj igrace </a>
+        <a     [routerLink]="['listaIgraca']" routerLinkActive="active">lista Igraca</a>
+        <a     [routerLink]="['listaTimova']" routerLinkActive="active">Lista timovaMenadzer</a>
+        <a     [routerLink]="['menadzerTimovi']" routerLinkActive="active">Timovi Menadzera</a>
+
      <!--admin-->
       <ul  style="background-color: orange
       ;">
-        <a     [routerLink]="['dodajTimove']" routerLinkActive="active">Dodaj timove</a> 
+        <a     [routerLink]="['dodajTimove']" routerLinkActive="active">Dodaj timove</a>
         <a     [routerLink]="['listaTimova']" routerLinkActive="active">Lista timov</a>
         <a     [routerLink]="['dodajRaspored']" routerLinkActive="active">Unesi raspored</a>
         <a     [routerLink]="['pregledRaspored']" routerLinkActive="active">Lista rasporeda</a>
+        <a     [routerLink]="['rezultatiTimova']" routerLinkActive="active">Lista rezultata</a>
       </ul>
-      
+
         <button  (click)="logOut()"  >Odjavi se</button>
-      
