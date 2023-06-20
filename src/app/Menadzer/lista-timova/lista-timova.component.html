@@ -10,7 +10,7 @@
     <td   (click)="ChoseTeam(team.id)"  style="background-color:blue;"  >{{team.naziv}}</td>
     <td>{{team.datumOsnivanja}}</td>
     <td>{{team.grad}}</td>
-    <td>{{team.logo}}</td>
+    <img   style="height: 50px;" [src]="team.logo"/>
 
   </tr>
 

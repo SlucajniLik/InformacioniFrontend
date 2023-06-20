@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Utakmica2 } from './Interfejsi/Utakmica2';
 import { Tim } from './Interfejsi/Tim';
 import { Utakmica } from './Interfejsi/Utakmica';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +83,19 @@ return this.http.put(this.url+"editMatch/"+id,utakmica2,{
 
 
 
+
+private apiKey = 'd56e6f47f9904f3de264e97df8ddbc8c';
+
+
+
+uploadImage(file: File) {
+  const formData = new FormData();
+  formData.append('image', file);
+
+
+
+  return this.http.post('https://api.imgbb.com/1/upload', formData, { params:{key:this.apiKey} }).pipe(map((response:any)=>response['data']['url']));
+}
 
 
 

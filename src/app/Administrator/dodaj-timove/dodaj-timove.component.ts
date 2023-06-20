@@ -11,7 +11,7 @@ import { PrijavaService } from 'src/app/prijava.service';
 })
 export class DodajTimoveComponent {
 
- 
+
 
   team:Tim={
 
@@ -20,12 +20,12 @@ export class DodajTimoveComponent {
     datumOsnivanja:'',
     grad:'',
     logo:'',
-    
 
 
 
 
-  
+
+
 }
 form=new FormGroup({
 name:new FormControl('',[Validators.required]),
@@ -50,30 +50,93 @@ this.prijavaServ.getInformation().subscribe(
 )
 
 }
+selectedFile:any
+onFileSelected(event: any) {
+  const file: File = event.target.files[0];
+  //this.uploadImage(file);
+this.selectedFile=file
+  console.log(file+"ddddd")
+
+  console.log(event.target.files[0]+"dddddeeeee")
+}
 
 
-addTeams()
-{
-
-this.team={
- 
-  naziv:this.Name?.value!,
-  datumOsnivanja:this.DateOfEstablishment?.value!,
-  grad:this.City?.value!,
-  logo:this.Logo?.value!,
+imageUrl:any
+async uploadImage() {
+  this.admService.uploadImage(this.selectedFile).subscribe(
+    response => {
+      console.log(response);
 
 
+        this.imageUrl = response;
+      // Process the response as per your requirement
 
-
+    },
+    error => {
+      console.error(error);
+      // Handle the error as per your requirement
+    }
+  );
 }
 
 
 
+async addTeams()
+{
 
-this.admService.addTeams(this.team).subscribe(
-  res=>{console.log(res)},
-  error=>{console.log(error)}
-)
+  this.admService.uploadImage(this.selectedFile).subscribe(
+    response => {
+      console.log(response);
+
+
+        this.imageUrl = response;
+      // Process the response as per your requirement
+
+
+
+
+
+      this.team={
+
+        naziv:this.Name?.value!,
+        datumOsnivanja:this.DateOfEstablishment?.value!,
+        grad:this.City?.value!,
+        logo:this.imageUrl!,
+
+
+
+
+      }
+
+
+
+
+      this.admService.addTeams(this.team).subscribe(
+        res=>{console.log(res)},
+        error=>{console.log(error)}
+      )
+
+
+
+    },
+    error => {
+      console.error(error);
+      // Handle the error as per your requirement
+    }
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
