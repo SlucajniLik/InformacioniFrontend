@@ -1,7 +1,11 @@
 <div  *ngFor="let player of players" style="background-color: red;" >
-    <p>Ime je:{{player.ime}}</p>
+    <p>Ime je:{{player.ime+" "+player.prezime}}</p>
     <p>Prezime je:{{player.datumRodjenja}}</p>
-    <p>Grad je :{{player.grad}}</p>
-  
+    <p>Pozicija je :{{player.pozicija}}</p>
+  <button  (click)="setLineUp(player.id,true)"   >Prva postava</button>
+  <button   (click)="setLineUp(player.id,false)"    >Na klupi</button>
+
+  <button  (click)="firstLineUp()"   style="background-color: green;" >Prva postava lista</button>
+  <button   (click)="secondLineUp()"  style="background-color: red;"  >Na klupi lista</button>
     </div>
     

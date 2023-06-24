@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ListaRezultataComponent {
 
 
 
-constructor(private admServ:AdminService)
+constructor(private admServ:AdminService,private router:Router)
 {
 }
 
@@ -25,5 +26,21 @@ teams?:any[]
     )
 
   }
+
+
+
+
+
+  seeResults(id:number)
+  {
+
+this.router.navigate(["rezultatiTimova2/"+id])
+
+  }
+
+
+
+
+
 
 }

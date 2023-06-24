@@ -1,7 +1,10 @@
 <form  [formGroup]="form">
     <input placeholder="Unesite ime" formControlName="name">
     <input placeholder="Unesite prezime" formControlName="surname">
-    <input placeholder="Unesite datum" formControlName="dateBirth">
+    <input placeholder="Unesite datum" type="date" formControlName="dateBirth">
+    <select  formControlName="pozicija"   >
+     <option  *ngFor="let pozicija of pozicije" [ngValue]="pozicija" >{{pozicija}}</option>
+    </select>
     <button (click)="addPlayer()"  >Posalji</button>
     </form>
     

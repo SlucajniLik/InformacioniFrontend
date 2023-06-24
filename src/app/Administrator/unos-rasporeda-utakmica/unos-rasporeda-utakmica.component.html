@@ -1,8 +1,8 @@
 <div   style="background-color:blue;" >
     <h1>Unesite datum i vreme utakmice</h1>
 <form  [formGroup]="form"  >
-    <input   placeholder="Unesite datum"    formControlName="datum" />
-    <input   placeholder="Unesite vreme"     formControlName="vreme" />
+    <input   placeholder="Unesite datum"  type="date"  formControlName="datum" />
+    <input   placeholder="Unesite vreme"  type="time"   formControlName="vreme" />
     <select    formControlName="tim1"    >
         <option  *ngFor="let team of teams"   [ngValue]="team.id" style="background-color: red;">
             Ime tima1 je:{{team.naziv}}

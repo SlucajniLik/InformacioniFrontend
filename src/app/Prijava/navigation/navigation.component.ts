@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { PrijavaService } from 'src/app/prijava.service';
-
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -10,6 +10,7 @@ import { PrijavaService } from 'src/app/prijava.service';
 export class NavigationComponent implements OnInit {
 user:any;
 token:any;
+  decodededToken: any;
 constructor(private route:Router,private prijavaServ:PrijavaService)
 {
   
@@ -18,23 +19,7 @@ constructor(private route:Router,private prijavaServ:PrijavaService)
 
 
   ngOnInit(): any {
-
-
-  
-    
-if(localStorage.getItem("token"))
-{
-this.prijavaServ.getInformation().subscribe(
-  res=>{this.user=res
-  console.log(this.user.role+"ovde")
-  }
-)
-}
-
-
-
-
-
+   
 
   }
 
@@ -46,9 +31,46 @@ this.prijavaServ.getInformation().subscribe(
      
       return true;
     }
-    return false;
+    return null;
   }
 
+
+role:any
+isLogedRole()
+{
+
+if(localStorage.getItem("token"))
+{
+  this.decodededToken=jwt_decode(localStorage.getItem("token")!)
+
+this.role=this.decodededToken["role"]
+
+if(this.role=="menadzer")
+{
+  return "menadzer"
+}
+
+
+
+if(this.role=="admin")
+{
+  return "admin"
+}
+
+
+
+if(this.role=="navijac")
+{
+  return "navijac"
+}
+}
+
+else
+{return null}
+
+return null
+
+}
 
 
 logOut()

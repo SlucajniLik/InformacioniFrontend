@@ -1,21 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Igrac } from 'src/app/Interfejsi/Igrac';
 import { MenadzerService } from 'src/app/menadzer.service';
+import { PrijavaService } from 'src/app/prijava.service';
 
 @Component({
   selector: 'app-dodaj-igrace',
   templateUrl: './dodaj-igrace.component.html',
   styleUrls: ['./dodaj-igrace.component.css']
 })
-export class DodajIgraceComponent {
+export class DodajIgraceComponent implements OnInit{
 
 player:Igrac={
 
     ime:'',
     prezime:'',
     datumRodjenja:'',
+    pozicija:'',
     idTima:0
 
 
@@ -26,7 +28,7 @@ form=new FormGroup({
 name:new FormControl('',[Validators.required]),
 surname:new FormControl('',[Validators.required]),
 dateBirth:new FormControl('',[Validators.minLength(3)]),
-
+pozicija:new FormControl('',[])
 
 
 
@@ -34,11 +36,27 @@ dateBirth:new FormControl('',[Validators.minLength(3)]),
 })
 
 
+myTeam:any
 
-
-constructor(private menService:MenadzerService,private route:ActivatedRoute)
+constructor(private menService:MenadzerService,private route:ActivatedRoute,private prijavaServ:PrijavaService)
 {}
+  ngOnInit(): void {
 
+   this.prijavaServ.getInformation().subscribe(
+
+    (ress:any)=>{
+
+      this.menService.getManagerTeam(ress.userId).subscribe(
+        res=>{this.myTeam=res
+       console.log("idTima"+this.myTeam.id)
+       
+       }
+     
+         )
+    }
+   )  
+  }
+pozicije:any[]=["pozicija1","pozicija2","pozicija3"]
 
 addPlayer()
 {
@@ -48,7 +66,9 @@ this.player={
  ime:this.Name?.value!,
  prezime:this.Surname?.value!,
  datumRodjenja:this.DateBirth?.value!,
- idTima:+this.route.snapshot.paramMap.get("id")!,
+ pozicija:this.Pozicija?.value!,
+ idTima:this.myTeam.id,
+ 
 
 
 
@@ -78,6 +98,13 @@ get Surname()
 get DateBirth()
 {
   return this.form.get('dateBirth')
+}
+
+
+
+get Pozicija()
+{
+  return this.form.get('pozicija')
 }
 
 

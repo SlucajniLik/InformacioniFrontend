@@ -59,11 +59,11 @@ this.utakmicaTim=res
 
 
 
-ChangeMatchData(id:number,idTim1:number,idTim2:number)
+ChangeMatchData(id:number,idTim1:number,idTim2:number,tim1:string,tim2:string)
 {
 
 
-this.router.navigate(["/promeniPodatkeUtakmice/"+id+"/"+idTim1+"/"+idTim2])
+this.router.navigate(["/promeniPodatkeUtakmice/"+id+"/"+idTim1+"/"+idTim2],{queryParams:{tim1:tim1,tim2:tim2}})
 
 
 

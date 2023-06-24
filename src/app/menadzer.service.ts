@@ -49,6 +49,20 @@ token=localStorage.getItem("token");
 
 
 
+getManagerTeam(id:number)
+  {
+  return this.http.get(this.url+"getManagerTeam/"+id,{
+
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + this.token,
+
+    },
+
+  },)
+}
+
+
   getPlayers(id:number)
     {
     return this.http.get(this.url+"getPlayers/"+id,{
@@ -78,9 +92,37 @@ token=localStorage.getItem("token");
 
 
 
+setLineUp(id:number,type?:boolean)
+{
+
+  return this.http.put(this.url+"editLineUp/"+id+"/"+type,{
+
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + this.token,
+
+    },
+
+  },)
 
 
 
+
+
+
+  
+
+}
+
+getLineUpPlayers(type:boolean,id:number)
+{
+return this.http.get(this.url+"getPlayersLineUp/"+id+"/"+type,{
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+  },
+})
+}
 
 
 

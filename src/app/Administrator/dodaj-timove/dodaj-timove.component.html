@@ -1,8 +1,13 @@
 <form  [formGroup]="form">
     <input placeholder="Unesite ime tima" formControlName="name">
-    <input placeholder="Unesite datum" formControlName="dateOfEstablishment">
+    <input placeholder="Unesite datum osnivanja"   type="date" formControlName="dateOfEstablishment">
     <input placeholder="Unesite grad" formControlName="city">
     <input type="file"  (change)="onFileSelected($event)"   formControlName="logo">
+    <select formControlName="idMenadzera"   >
+
+     <option   *ngFor="let manager of managers" [ngValue]="manager.id"  >{{manager.ime+" "+manager.prezime}}</option>
+
+    </select>
     <button (click)="addTeams()"  [disabled]="!selectedFile">Posalji</button>
     </form>
 

@@ -98,6 +98,88 @@ uploadImage(file: File) {
 }
 
 
+getResults(id:number)
+{
+return this.http.get(this.url+"getResults/"+id,{
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+  }})
+
+
+
+}
+
+
+
+
+
+addResult(result:any)
+{
+return this.http.post(this.url+"addResult",result,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+
+updateResult(result:any)
+{
+return this.http.put(this.url+"updateResult",result,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+getTeamResult(id:number,sez:string)
+{
+return this.http.get(this.url+"getTeamResult/"+id+"/"+sez,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+
+getManagers()
+{
+return this.http.get(this.url+"getManagers",{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+
+
 
 
 

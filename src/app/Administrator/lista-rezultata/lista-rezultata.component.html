@@ -7,10 +7,10 @@
   <th>Logo:</th>
   </tr>
   <tr  *ngFor="let team of teams" style="background-color: red;"  >
-    <td>{{team.naziv}}</td>
+    <td   (click)="seeResults(team.id)"  >{{team.naziv}}</td>
     <td>{{team.datumOsnivanja}}</td>
     <td>{{team.grad}}</td>
-    <td>{{team.logo}}</td>
+    <td><img    style="height: 50px;" [src]="team.logo"/></td>
 
   </tr>
 

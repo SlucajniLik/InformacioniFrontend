@@ -5,9 +5,13 @@
     <hr>
 
 
-
-    <input type="text" formControlName="result" placeholder="Unesite rezultat" name="korisnickoIme" id="korisnickoIme" required>
-
+    <label for="home-score">{{tim1}}:</label>
+    <input type="number"  formControlName="resultTim1"    id="home-score" name="home-score" min="0" max="20" step="1" placeholder="Home" required>
+    
+    <label for="away-score">{{tim2}}:</label>
+    <input type="number"    formControlName="resultTim2" id="away-score" name="away-score" min="0" max="20" step="1" placeholder="Away" required>
+    
+   
 
     <input type="text" formControlName="redCard"  placeholder="Unesite broj crvenih kartona" name="lozinka" id="lozinka" required>
     <input type="text" formControlName="yellowCard"  placeholder="Unesite broj zutih kartona" name="lozinka" id="lozinka" required>

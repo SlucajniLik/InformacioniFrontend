@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenadzerService } from 'src/app/menadzer.service';
+import { PrijavaService } from 'src/app/prijava.service';
 
 @Component({
   selector: 'app-lista-igraca',
@@ -9,7 +10,7 @@ import { MenadzerService } from 'src/app/menadzer.service';
 })
 export class ListaIgracaComponent {
 
-constructor(private menService:MenadzerService,private route:ActivatedRoute)
+constructor(private router:Router,  private menService:MenadzerService,private route:ActivatedRoute,private prijavaServ:PrijavaService)
 {
 
 
@@ -17,22 +18,68 @@ constructor(private menService:MenadzerService,private route:ActivatedRoute)
 
 
   players?:any[]
-
+myTeam:any
   ngOnInit(): void {
-    this.menService.getPlayers(+this.route.snapshot.paramMap.get("id")!).subscribe(
-      (res:any)=>{this.players=res
 
+    this.prijavaServ.getInformation().subscribe(
+
+      (ress:any)=>{
+  
+        this.menService.getManagerTeam(ress.userId).subscribe(
+          res=>{this.myTeam=res
+
+            this.menService.getPlayers(this.myTeam.id).subscribe(
+              (res:any)=>{this.players=res
+        
+              }
+            )
+       
+         
+         }
+       
+           )
       }
-    )
-
+     )  
   }
 
 
+setLineUp(id:number,type?:boolean)
+{
+
+this.menService.setLineUp(id,type).subscribe(
+  res=>{console.log(res)}
+)
+
+
+const index=this.players?.findIndex(t=>t.id==id)
+
+
+if(index!>-1)
+{
+     this.players?.splice(index!,1)
+}
+}
 
 
 
 
 
+firstLineUp()
+{
+
+this.router.navigate(["prvaPostava"])
+
+}
+
+
+
+
+secondLineUp()
+{
+
+this.router.navigate(["drugaPostava"])
+
+}
 
 
 }
