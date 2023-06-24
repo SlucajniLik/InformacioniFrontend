@@ -26,6 +26,12 @@ import { LoginGuard } from './login.guard';
 import { PrvaPostavaComponent } from './Menadzer/prva-postava/prva-postava.component';
 import { DrugaPostavaComponent } from './Menadzer/druga-postava/druga-postava.component';
 
+import { NavijacGuard } from './navijac.guard';
+import { ListaTimovaNavijacComponent } from './Navijac/lista-timova-navijac/lista-timova-navijac.component';
+import { DozvoliNavijaceComponent } from './Administrator/dozvoli-navijace/dozvoli-navijace.component';
+
+
+
 
 
 
@@ -48,7 +54,9 @@ import { DrugaPostavaComponent } from './Menadzer/druga-postava/druga-postava.co
     MenadzerTimoviComponent,
     ListaRezultata2Component,
     PrvaPostavaComponent,
-    DrugaPostavaComponent
+    DrugaPostavaComponent,
+    ListaTimovaNavijacComponent,
+    DozvoliNavijaceComponent
 
 
   ],
@@ -70,15 +78,22 @@ import { DrugaPostavaComponent } from './Menadzer/druga-postava/druga-postava.co
       { path: 'promeniPodatkeUtakmice/:id/:idTim1/:idTim2', component: IzmeniPodatkeUtakmiceComponent ,canActivate:[AdminGuard] },
       { path: 'rezultatiTimova', component: ListaRezultataComponent,canActivate:[AdminGuard]  },
       { path: 'listaTimova', component: ListaTimovaComponent,canActivate:[AdminGuard] },
+      { path: 'dozvoliNavijace', component:DozvoliNavijaceComponent ,canActivate:[AdminGuard] },
      // { path: 'rezultatiTimova2/:id', component: ListaRezultata2Component },
 //menadzer
       
-      { path: 'pregledRezultata', component: PregledRezultataComponent,canActivate:[MenadzerGuard] },
+     
       
       { path: 'dodajIgrace', component:DodajIgraceComponent ,canActivate:[MenadzerGuard]},
       { path: 'listaIgraca', component:ListaIgracaComponent,canActivate:[MenadzerGuard] },
       { path: 'prvaPostava', component:PrvaPostavaComponent,canActivate:[MenadzerGuard] },
       { path: 'drugaPostava', component:DrugaPostavaComponent,canActivate:[MenadzerGuard] },
+
+
+//navijac
+
+{path:'listaTimovaNavijac',component:ListaTimovaNavijacComponent,canActivate:[NavijacGuard]},
+{ path: 'pregledRezultata/:id', component: PregledRezultataComponent,canActivate:[NavijacGuard] },
     ])
   ],
   providers: [],

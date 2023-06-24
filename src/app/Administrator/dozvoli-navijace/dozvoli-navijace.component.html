@@ -1,0 +1,23 @@
+<table>
+<tr>
+<th>Ime:</th>
+<th>Prezime:</th> 
+<th>Dozvoli:</th>
+<th>Odbij:</th>    
+</tr>
+<tr  *ngFor="let member of members"   >
+ <td>
+   {{member.ime}} 
+ </td>  
+ <td>
+{{member.prezime}}
+ </td> 
+<td>
+<button  (click)="allowMember(member.id,true)"  >Dozvoli</button>  
+</td>
+<td>
+<button    (click)="rejectMember(member.id,false)"   >Odbij</button>
+</td>
+</tr>
+
+</table>

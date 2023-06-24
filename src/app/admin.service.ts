@@ -179,6 +179,39 @@ return this.http.get(this.url+"getManagers",{
 
 
 
+getMemebers()
+{
+return this.http.get(this.url+"getNonApprovedMemebers",{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+editMemebers(id:number,status:boolean)
+{
+return this.http.put(this.url+"approveMemebers/"+id+"/"+status,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+
 
 
 

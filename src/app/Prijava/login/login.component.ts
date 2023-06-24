@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PrijavaService } from 'src/app/prijava.service';
 import { LoginKorisnik } from "src/app/Interfejsi/LoginKorisnik "
 import { Router } from '@angular/router';
+import { NavijacService } from 'src/app/navijac.service';
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-constructor(private prijavaserv:PrijavaService,private router:Router)
+constructor(private prijavaserv:PrijavaService,private router:Router,private navServ:NavijacService)
 {
 
 }
 
-
+decodededToken:any
 user?:LoginKorisnik
   form=new FormGroup(
     {
@@ -40,7 +42,7 @@ user?:LoginKorisnik
   }
   
 token:any
-
+nonAllowed:any;
 login()
 {
 
@@ -84,10 +86,52 @@ this.prijavaserv.loginManager(this.user).subscribe(
 this.prijavaserv.loginMember(this.user).subscribe(
 
   x=>{this.token=x
-    if(this.token)
+    if(this.token )
     {
-   localStorage.setItem("token",this.token)
-   this.router.navigate(["pregledRezultata"])
+      console.log(this.token+"Nije vam dozvoljenooooooo")
+      if(this.token=="nonAllowed")
+      {
+
+      
+      }
+       else
+       {
+
+        localStorage.setItem("token",this.token)
+
+        this.decodededToken=jwt_decode(localStorage.getItem("token")!)
+       this.navServ.getTeamsMemberInformation(this.decodededToken['nameid']).subscribe(
+
+         (res:any)=>
+         {
+
+          console.log(res+"titititit")
+           if(res.idTima!=null)
+           {
+            this.router.navigate(["pregledRezultata/"+res.idTima])
+           }
+           else
+           {
+
+
+            this.router.navigate(["listaTimovaNavijac"])
+           }
+          
+         }
+
+
+
+       )
+
+
+
+
+
+
+
+       
+       }
+  
    
     }
   } 
