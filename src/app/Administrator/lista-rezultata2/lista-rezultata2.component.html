@@ -1,5 +1,6 @@
 <table>
     <tr>
+      <th>Sezona:</th>
     <th>Broj odigranih susreta:</th>
     <th>Broj pobeda:</th>
     <th>Broj neresinh:</th>
@@ -7,6 +8,7 @@
     <th>Broj bodova:</th>
     </tr>
     <tr  *ngFor="let result of results" style="background-color: red;"  >
+      <td>{{result.sezona}}</td>
       <td>{{result.brOdigranihSusreta}}</td>
       <td>{{result.brPobeda}}</td>
       <td>{{result.brNeresenih}}</td>

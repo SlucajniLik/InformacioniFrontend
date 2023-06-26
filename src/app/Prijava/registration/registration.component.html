@@ -20,8 +20,8 @@
       <input type="text"   formControlName="password" placeholder="Unesite lozinku" name="lozinka" id="lozinka" required>
 
 
-      <select formControlName="role"  >
-        <option [ngValue]="'d'" >Izaberite ulogu</option>
+      <select formControlName="role" >
+        <option disabled>Izaberite ulogu</option>
     <option [ngValue]="'admin'" >Admin</option>
     <option [ngValue]="'menadzer'" >Mendzer</option>
     <option [ngValue]="'navijac'" >Navijac</option>
@@ -46,3 +46,7 @@
 
     </div>
   </form>
+
+
+
+  

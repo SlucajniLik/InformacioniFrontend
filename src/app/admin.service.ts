@@ -215,6 +215,54 @@ return this.http.put(this.url+"approveMemebers/"+id+"/"+status,{
 
 
 
+getMemebersForPay()
+{
+return this.http.get(this.url+"gettMemebers",{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+
+
+
+addPayment(payment:any)
+{
+return this.http.post(this.url+"addPayment",payment,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
+
+
+
+getPayment(id:number)
+{
+return this.http.get(this.url+"getPaymentMember/"+id,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+
+},)
+}
+
 
 
 

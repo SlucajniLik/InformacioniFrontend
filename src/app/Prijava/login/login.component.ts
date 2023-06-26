@@ -108,7 +108,7 @@ this.prijavaserv.loginMember(this.user).subscribe(
           console.log(res+"titititit")
            if(res.idTima!=null)
            {
-            this.router.navigate(["pregledRezultata/"+res.idTima])
+            this.router.navigate(["pregledRezultata"])
            }
            else
            {

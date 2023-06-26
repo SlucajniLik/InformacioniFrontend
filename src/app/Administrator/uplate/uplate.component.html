@@ -1,0 +1,14 @@
+<form  [formGroup]="form">
+<input type="date"      formControlName="datum"  />
+<input  placeholder="Unesite sumu" formControlName="suma"   >
+<button    (click)="MemberPay()" >Unesite sumu</button>
+</form>
+<div>    
+<h1>Ime je :{{paymentMember.ime}}</h1>
+<h1>Prezime je :{{paymentMember.prezime}}</h1>
+<h1>Datum placanja  je :{{paymentMember.datumPlacanja}}</h1>
+<h1>Datum vazenja  je :{{datee2}}</h1>
+<h1>Suma je :{{paymentMember.suma}}</h1>
+
+
+</div>

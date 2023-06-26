@@ -68,7 +68,7 @@ this.navServ.editTeamsMember(this.user.userId,id).subscribe(
     this.teams=[]  
 
     this.status=true
-    this.router.navigate(["pregledRezultata/"+id])
+    this.router.navigate(["pregledRezultata"],{ queryParams: { id:id } })
   }
 )
 

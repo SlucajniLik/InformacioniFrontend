@@ -26,17 +26,20 @@
         <a     [routerLink]="['dodajRaspored']" routerLinkActive="active"  >Unesi raspored</a>
         <a     [routerLink]="['pregledRaspored']" routerLinkActive="active"  >Lista rasporeda</a>
         <a     [routerLink]="['rezultatiTimova']" routerLinkActive="active"    >Lista rezultata</a>
-        dozvoliNavijace
         <a     [routerLink]="['dozvoliNavijace']" routerLinkActive="active"    >Lista navijaca</a>
+        <a     [routerLink]="['navijaciUplate']" routerLinkActive="active"    >Uplate Navijaca</a>
         <!-- <a     [routerLink]="['rezultatiTimova2']" routerLinkActive="active"  *ngIf="isLogedRole()=='admin'" >Lista rezultata22222</a>-->
       </ul>
       
 
 <ul  *ngIf="isLogedRole()=='navijac'"       >
-<a     [routerLink]="['listaTimovaNavijac']" routerLinkActive="active">Lista timova</a>
 
+<a     [routerLink]="['pregledRezultata']" routerLinkActive="active">Sezonski rezultati</a>
+<a     [routerLink]="['podaciNavijaca']" routerLinkActive="active">Podaci navijaca</a>
 
 </ul>
 
 
         <button  (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</button>
+
+       

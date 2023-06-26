@@ -52,6 +52,36 @@ return this.http.put(this.url+"editMemeberTeam/"+idMemeber+"/"+idTeam,{
 }
 
 
+getResultsForMember(id:number)
+{
+return this.http.get(this.url+"getResultForMember/"+id,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+})
+}
+
+
+
+getMatchesForMember(id:number,sezona:string)
+{
+return this.http.get(this.url+"getMatchesForMember/"+id+"/"+sezona,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+})
+}
+
+
+
+
+
 
 
 

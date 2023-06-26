@@ -29,6 +29,13 @@ import { DrugaPostavaComponent } from './Menadzer/druga-postava/druga-postava.co
 import { NavijacGuard } from './navijac.guard';
 import { ListaTimovaNavijacComponent } from './Navijac/lista-timova-navijac/lista-timova-navijac.component';
 import { DozvoliNavijaceComponent } from './Administrator/dozvoli-navijace/dozvoli-navijace.component';
+import { NavijaciUplateComponent } from './Administrator/navijaci-uplate/navijaci-uplate.component';
+import { UplateComponent } from './Administrator/uplate/uplate.component';
+import { OdigraneUtakmiceComponent } from './Navijac/odigrane-utakmice/odigrane-utakmice.component';
+import { PodaciComponent } from './Navijac/podaci/podaci.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AngularMaterialModule } from './angular-material.module';
 
 
 
@@ -56,7 +63,11 @@ import { DozvoliNavijaceComponent } from './Administrator/dozvoli-navijace/dozvo
     PrvaPostavaComponent,
     DrugaPostavaComponent,
     ListaTimovaNavijacComponent,
-    DozvoliNavijaceComponent
+    DozvoliNavijaceComponent,
+ NavijaciUplateComponent,
+ UplateComponent,
+ OdigraneUtakmiceComponent,
+ PodaciComponent
 
 
   ],
@@ -77,8 +88,12 @@ import { DozvoliNavijaceComponent } from './Administrator/dozvoli-navijace/dozvo
       { path: 'pregledRaspored', component: ListaUtakmicaComponent ,canActivate:[AdminGuard] },
       { path: 'promeniPodatkeUtakmice/:id/:idTim1/:idTim2', component: IzmeniPodatkeUtakmiceComponent ,canActivate:[AdminGuard] },
       { path: 'rezultatiTimova', component: ListaRezultataComponent,canActivate:[AdminGuard]  },
+     
+      { path: 'rezultatiTimova2/:id', component: ListaRezultata2Component,canActivate:[AdminGuard]  },
       { path: 'listaTimova', component: ListaTimovaComponent,canActivate:[AdminGuard] },
       { path: 'dozvoliNavijace', component:DozvoliNavijaceComponent ,canActivate:[AdminGuard] },
+      { path: 'navijaciUplate', component:NavijaciUplateComponent ,canActivate:[AdminGuard] },
+      { path: 'uplate/:id', component:UplateComponent ,canActivate:[AdminGuard] },
      // { path: 'rezultatiTimova2/:id', component: ListaRezultata2Component },
 //menadzer
       
@@ -93,8 +108,14 @@ import { DozvoliNavijaceComponent } from './Administrator/dozvoli-navijace/dozvo
 //navijac
 
 {path:'listaTimovaNavijac',component:ListaTimovaNavijacComponent,canActivate:[NavijacGuard]},
-{ path: 'pregledRezultata/:id', component: PregledRezultataComponent,canActivate:[NavijacGuard] },
-    ])
+{ path: 'pregledRezultata', component: PregledRezultataComponent,canActivate:[NavijacGuard] },
+{ path: 'odigraneUtakmice', component: OdigraneUtakmiceComponent,canActivate:[NavijacGuard] },
+{ path: 'podaciNavijaca', component: PodaciComponent,canActivate:[NavijacGuard] },
+    ]),
+
+    
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

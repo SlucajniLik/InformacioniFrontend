@@ -1,1 +1,24 @@
-<p>Navijac</p>
+<table>
+    <tr>
+      <th>Sezona:</th>
+    <th>Broj odigranih susreta:</th>
+    <th>Broj pobeda:</th>
+    <th>Broj neresinh:</th>
+    <th>Broj izgubljenih:</th>
+    <th>Broj bodova:</th>
+    <th>Odigrane utakmice:</th>
+    </tr>
+    <tr  *ngFor="let result of results" style="background-color: red;"  >
+      <td>{{result.sezona}}</td>
+      <td>{{result.brOdigranihSusreta}}</td>
+      <td>{{result.brPobeda}}</td>
+      <td>{{result.brNeresenih}}</td>
+      <td>{{result.brIzgubljenih}}</td>
+      <td>{{result.brBodova}}</td>      
+  <button (click)="viewSeason(result.idTima,result.sezona)">Odigrane utakmice</button>
+    </tr>
+  
+    </table>
+  
+  
+   
