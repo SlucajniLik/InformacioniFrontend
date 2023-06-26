@@ -17,7 +17,7 @@ export class PodaciComponent {
 
 
   
-constructor(private admServ:AdminService,private route:ActivatedRoute,private prijavaServ:PrijavaService
+constructor(private route:ActivatedRoute,private prijavaServ:PrijavaService
   ,private navServ:NavijacService
   )
 {
@@ -35,7 +35,9 @@ user:any={
   ime:'',
   prezime:'',
   datumPlacanja:'',
-  suma:''
+  suma:'',
+  imeTima:'',
+  logo:''
 
 }
 teamId:any
@@ -63,11 +65,23 @@ this.navServ.getTeamsMemberInformation(this.user.userId).subscribe(
 
 
 
-        this.admServ.getPayment(this.teamId).subscribe(
-          (res:any)=>{this.paymentMember=res
+        this.navServ.getMemberData(this.teamId).subscribe(
+          (res:any)=>{
             this.datee=new Date(res.datumPlacanja)
             this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
             this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
+
+        const currentDate=new Date()
+        const currentDateFormed=this.datePipe.transform(currentDate,'yyyy-MM-dd')
+        console.log(currentDateFormed);
+          if(currentDateFormed!>this.datee2)
+          {
+            this.paymentMember=res
+            
+          }
+          else{
+            this.paymentMember=null
+          }
           console.log(this.datee2)
           }
         )
@@ -110,32 +124,5 @@ payment:any;
 
 
 
-MemberPay()
-{
 
-
-this.payment={
-
-datumPlacanja:this.Datum?.value!,
-suma:this.Suma?.value!,
-idNavijaca:+this.route.snapshot.paramMap.get("id")!
-}
-this.admServ.addPayment(this.payment).subscribe(
-  res=>{console.log(res)
-  
-    this.admServ.getPayment(+this.route.snapshot.paramMap.get("id")!).subscribe(
-      (res:any)=>{this.paymentMember=res
-        this.datee=new Date(res.datumPlacanja)
-        this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
-        this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
-      console.log(this.datee2)
-      }
-    )
-  
-  }
-)
-
-
-
-}
 }

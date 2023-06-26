@@ -80,6 +80,17 @@ return this.http.get(this.url+"getMatchesForMember/"+id+"/"+sezona,{
 
 
 
+getMemberData(id:number)
+{
+return this.http.get(this.url+"getMemberData/"+id,{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + this.token,
+
+  },
+})
+}
 
 
 

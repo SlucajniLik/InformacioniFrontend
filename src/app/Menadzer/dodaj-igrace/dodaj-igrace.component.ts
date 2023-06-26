@@ -45,10 +45,10 @@ constructor(private menService:MenadzerService,private route:ActivatedRoute,priv
    this.prijavaServ.getInformation().subscribe(
 
     (ress:any)=>{
-
+      console.log("dddddddi"+ress)
       this.menService.getManagerTeam(ress.userId).subscribe(
         res=>{this.myTeam=res
-       console.log("idTima"+this.myTeam.id)
+       
        
        }
      

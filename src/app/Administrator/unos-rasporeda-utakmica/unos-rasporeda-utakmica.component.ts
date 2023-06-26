@@ -60,7 +60,7 @@ form=new FormGroup({
   return this.form.get("tim2")
  }
 
-
+allow:boolean=true
 
 onClick()
 {
@@ -78,7 +78,17 @@ this.utakmica={
 
 console.log(this.utakmica)
 this.admServ.addMatch(this.utakmica).subscribe(
-  res=>{console.log(res)}
+  res=>{
+    if(res==null)
+    {this.allow=false}
+    else
+    {
+      this.allow=true
+    }
+    
+  
+  
+  }
 )
 
 }

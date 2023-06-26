@@ -1,4 +1,4 @@
-<table>
+<table  *ngIf="resultsLength!>0"   >
     <tr>
       <th>Sezona:</th>
     <th>Broj odigranih susreta:</th>
@@ -19,6 +19,8 @@
     </tr>
   
     </table>
-  
+  <div     *ngIf="resultsLength==0">
+    <h1>Izvrsite potrebne uplate da biste imali pristup podacima</h1>
+  </div>
   
    

@@ -51,6 +51,7 @@ return this.http.post(this.url+"loginMemberFan",user,{responseType: 'text'})
 
 getInformation()
 {
+  console.log("pregledRezultata"+localStorage.getItem("token"))
 return this.http.get(this.url+"getInformation",{
   headers: {
     'Access-Control-Allow-Origin': '*',

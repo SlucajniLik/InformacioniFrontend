@@ -1,14 +1,15 @@
-<form  [formGroup]="form">
-    <input type="date"      formControlName="datum"  />
-    <input  placeholder="Unesite sumu" formControlName="suma"   >
-    <button    (click)="MemberPay()" >Unesite sumu</button>
-    </form>
-    <div>    
+
+    <div  *ngIf="paymentMember!=null"    >   
+    <div>
+     <img  style="height: 150px;" [src]="paymentMember.logo">
+     <h1>Ime tima je :{{paymentMember.imeTima}}</h1>
+    </div>
     <h1>Ime je :{{paymentMember.ime}}</h1>
     <h1>Prezime je :{{paymentMember.prezime}}</h1>
     <h1>Datum placanja  je :{{paymentMember.datumPlacanja}}</h1>
     <h1>Datum vazenja  je :{{datee2}}</h1>
     <h1>Suma je :{{paymentMember.suma}}</h1>
-    
-    
+    </div>
+    <div  *ngIf="paymentMember==null"    >
+    <h1>Izvrsite potrebne uplate da biste pristupili podacima</h1>    
     </div>
