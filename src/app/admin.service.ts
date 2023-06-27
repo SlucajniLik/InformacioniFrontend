@@ -18,7 +18,7 @@ export class AdminService {
     return this.http.post(this.url+"addTeams",team,{
       headers: {
         'Access-Control-Allow-Origin': '*',
-        Authorization: 'bearer ' + this.token,
+        Authorization: 'bearer ' + localStorage.getItem("token"),
       },
     })
     }
@@ -29,7 +29,7 @@ export class AdminService {
 
       headers: {
         'Access-Control-Allow-Origin': '*',
-        Authorization: 'bearer ' + this.token,
+        Authorization: 'bearer ' + localStorage.getItem("token"),
 
       },
 
@@ -42,7 +42,7 @@ export class AdminService {
 
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
 
     },
 
@@ -57,7 +57,7 @@ return this.http.get(this.url+"getMatches",{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -74,7 +74,7 @@ return this.http.put(this.url+"editMatch/"+id,utakmica2,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -103,7 +103,7 @@ getResults(id:number)
 return this.http.get(this.url+"getResults/"+id,{
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
   }})
 
 
@@ -120,7 +120,7 @@ return this.http.post(this.url+"addResult",result,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -137,7 +137,7 @@ return this.http.put(this.url+"updateResult",result,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -151,7 +151,7 @@ return this.http.get(this.url+"getTeamResult/"+id+"/"+sez,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -168,7 +168,7 @@ return this.http.get(this.url+"getManagers",{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -185,7 +185,7 @@ return this.http.get(this.url+"getNonApprovedMemebers",{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -201,7 +201,7 @@ return this.http.put(this.url+"approveMemebers/"+id+"/"+status,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -221,7 +221,7 @@ return this.http.get(this.url+"gettMemebers",{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -240,7 +240,7 @@ return this.http.post(this.url+"addPayment",payment,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 
@@ -256,7 +256,7 @@ return this.http.get(this.url+"getPaymentMember/"+id,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 

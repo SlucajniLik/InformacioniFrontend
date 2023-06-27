@@ -12,7 +12,17 @@ export class PrijavaService {
 url="https://localhost:7166/"
 
 
-token=localStorage.getItem("token");
+register(user:Korisnik,type:string)
+{
+return this.http.post(this.url+"register/"+type,user)
+}
+
+
+
+
+
+
+
 registerAdmin(user:Korisnik)
 {
 return this.http.post(this.url+"registerAdmin",user)
@@ -29,6 +39,13 @@ return this.http.post(this.url+"registerMemmerFan",user)
 }
 
 
+
+
+
+login(user:LoginKorisnik)
+{
+return this.http.post(this.url+"login",user,{responseType: 'text'})
+}
 
 
 loginAdmin(user:LoginKorisnik)
@@ -51,11 +68,11 @@ return this.http.post(this.url+"loginMemberFan",user,{responseType: 'text'})
 
 getInformation()
 {
-  console.log("pregledRezultata"+localStorage.getItem("token"))
+ 
 return this.http.get(this.url+"getInformation",{
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' +localStorage.getItem("token"),
   },
 })
 }

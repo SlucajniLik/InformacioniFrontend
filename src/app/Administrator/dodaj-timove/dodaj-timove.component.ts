@@ -47,9 +47,9 @@ idMenadzera:new FormControl('',[])
 constructor(private admService:AdminService,private prijavaServ:PrijavaService)
 {
 
-this.prijavaServ.getInformation().subscribe(
+/*this.prijavaServ.getInformation().subscribe(
   (res:any)=>{console.log(res.userId+"ccc")}
-)
+)*/
 
 }
 

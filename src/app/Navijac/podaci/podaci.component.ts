@@ -74,7 +74,7 @@ this.navServ.getTeamsMemberInformation(this.user.userId).subscribe(
         const currentDate=new Date()
         const currentDateFormed=this.datePipe.transform(currentDate,'yyyy-MM-dd')
         console.log(currentDateFormed);
-          if(currentDateFormed!>this.datee2)
+          if(currentDateFormed!<this.datee2)
           {
             this.paymentMember=res
             

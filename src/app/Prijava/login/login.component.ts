@@ -43,28 +43,109 @@ user?:LoginKorisnik
   
 token:any
 nonAllowed:any;
+resp?:any
 login()
 {
 
   this.user=
 {
 korisnickoIme:this.Username?.value!,
-lozinka:this.Password?.value!
+lozinka:this.Password?.value!,
+tip:''
 }
 
 
 
+this.prijavaserv.login(this.user).subscribe(
+
+
+  (res:any)=>{
+    this.resp=res
+console.log(this.resp+"aaaa")
+    if(res=="ne")
+     {
+      console.log("Korisnik vec postoji u bazi")
+     }
+     else if(res=="nonAllowed")
+     {
+
+        console.log("Jos uvek niste odobreni")
+     }
+     else if(res)
+     {
+             
+          localStorage.setItem("token",res)   
+            
+         
+          this.decodededToken=jwt_decode(localStorage.getItem("token")!)
+          console.log(this.decodededToken['role']+"dddddd88888")
+         if(this.decodededToken['role']=="admin")
+         {
+          this.router.navigate(["dodajTimove"])
+         }
+         else if(this.decodededToken['role']=="menadzer")
+         {
+          this.router.navigate(["dodajIgrace"])
+         }
+         else if(this.decodededToken['role']=="navijac")
+         {
+            
+       
+      
+
+        console.log("sdsdsdsdsdsdsdsdsdsdsd")
+
+        this.decodededToken=jwt_decode(localStorage.getItem("token")!)
+       this.navServ.getTeamsMemberInformation(this.decodededToken['nameid']).subscribe(
+
+         (res:any)=>
+         {
+
+          console.log(res+"titititit")
+           if(res.idTima!=null)
+           {
+            this.router.navigate(["pregledRezultata"])
+           }
+           else
+           {
+
+
+            this.router.navigate(["listaTimovaNavijac"])
+           }
+          
+         }
+       )
+         }
+     }
+  }
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 this.prijavaserv.loginAdmin(this.user).subscribe(
  x=>{this.token=x
  if(this.token)
  {
 localStorage.setItem("token",this.token)
+
+console.log(this.token+"ovde je token")
 this.router.navigate(["dodajTimove"])
 //console.log(this.token+"dfdf")
  }
  else
  {
-  console.log(this.user?.lozinka+"dfdf")
+  console.log(this.token+"ovde nijeee token")
  }
 
 }
@@ -137,7 +218,7 @@ this.prijavaserv.loginMember(this.user).subscribe(
   } 
 )
 
-
+*/
 
 
 
@@ -150,7 +231,6 @@ this.prijavaserv.loginMember(this.user).subscribe(
 
 
 }
-
 
 
 

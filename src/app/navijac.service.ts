@@ -8,7 +8,7 @@ export class NavijacService {
 
   constructor(private http:HttpClient) { }
 url="https://localhost:7166/"
-token=localStorage.getItem("token");
+token:any;
  
 
 
@@ -19,7 +19,7 @@ return this.http.get(this.url+"getTeamMemeberInforrmation/"+id,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 })
@@ -34,7 +34,7 @@ return this.http.get(this.url+"getTeamsMember/"+id,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 })
@@ -45,7 +45,7 @@ return this.http.put(this.url+"editMemeberTeam/"+idMemeber+"/"+idTeam,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 })
@@ -58,7 +58,7 @@ return this.http.get(this.url+"getResultForMember/"+id,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 })
@@ -72,7 +72,7 @@ return this.http.get(this.url+"getMatchesForMember/"+id+"/"+sezona,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 })
@@ -86,7 +86,7 @@ return this.http.get(this.url+"getMemberData/"+id,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
 
   },
 })

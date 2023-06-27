@@ -15,7 +15,7 @@ token=localStorage.getItem("token");
   return this.http.post(this.url+"addPlayers",player,{
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
     },
   })
   }
@@ -26,7 +26,7 @@ token=localStorage.getItem("token");
   return this.http.put(this.url+"choseTeam/"+id+"/"+idMenadzera,"",{
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
     },
   })
   }
@@ -39,7 +39,7 @@ token=localStorage.getItem("token");
 
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
 
     },
 
@@ -55,7 +55,7 @@ getManagerTeam(id:number)
 
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
 
     },
 
@@ -68,7 +68,7 @@ getManagerTeam(id:number)
     return this.http.get(this.url+"getPlayers/"+id,{
       headers: {
         'Access-Control-Allow-Origin': '*',
-        Authorization: 'bearer ' + this.token,
+        Authorization: 'bearer ' + localStorage.getItem("token"),
       },
     })
   }
@@ -83,7 +83,7 @@ getManagerTeam(id:number)
 
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
 
     },
 
@@ -94,24 +94,16 @@ getManagerTeam(id:number)
 
 setLineUp(id:number,type?:boolean)
 {
-
-  return this.http.put(this.url+"editLineUp/"+id+"/"+type,{
+console.log(localStorage.getItem("token")+"556645")
+  return this.http.put(this.url+"editLineUp/"+id+"/"+type,"",{
 
     headers: {
       'Access-Control-Allow-Origin': '*',
-      Authorization: 'bearer ' + this.token,
+      Authorization: 'bearer ' + localStorage.getItem("token"),
 
     },
 
   },)
-
-
-
-
-
-
-  
-
 }
 
 getLineUpPlayers(type:boolean,id:number)
@@ -119,7 +111,7 @@ getLineUpPlayers(type:boolean,id:number)
 return this.http.get(this.url+"getPlayersLineUp/"+id+"/"+type,{
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: 'bearer ' + this.token,
+    Authorization: 'bearer ' + localStorage.getItem("token"),
   },
 })
 }
