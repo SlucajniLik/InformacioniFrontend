@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { Igrac } from 'src/app/Interfejsi/Igrac';
 import { MenadzerService } from 'src/app/menadzer.service';
 import { PrijavaService } from 'src/app/prijava.service';
@@ -65,7 +66,7 @@ this.player={
 
  ime:this.Name?.value!,
  prezime:this.Surname?.value!,
- datumRodjenja:this.DateBirth?.value!,
+ datumRodjenja:moment(this.DateBirth?.value!).format("YYYY-MM-DD"),
  pozicija:this.Pozicija?.value!,
  idTima:this.myTeam.id,
  

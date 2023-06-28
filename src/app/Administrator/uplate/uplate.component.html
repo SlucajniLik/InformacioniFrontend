@@ -1,8 +1,4 @@
-<form  [formGroup]="form">
-<input type="date"      formControlName="datum"  />
-<input  placeholder="Unesite sumu" formControlName="suma"   >
-<button    (click)="MemberPay()" >Unesite sumu</button>
-</form>
+
 <div>    
 <h1>Ime je :{{paymentMember.ime}}</h1>
 <h1>Prezime je :{{paymentMember.prezime}}</h1>
@@ -12,3 +8,32 @@
 
 
 </div>
+
+
+
+
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form"  >
+        <h2>Uplatnice</h2>
+       <!---- <mat-error >
+          The username and password were not recognized
+        </mat-error>-->
+        <mat-form-field>
+          <input  matInput  placeholder="Datum placanja"   [matDatepicker]="picker"     formControlName="datum" >
+          <mat-hint>YYYY-MM-DD</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+       
+        <mat-form-field>
+          <input matInput placeholder="Suma" formControlName="suma"  >
+        </mat-form-field>
+       
+        <button mat-raised-button color="primary" (click)="MemberPay()">Unesite sumu</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+
+  

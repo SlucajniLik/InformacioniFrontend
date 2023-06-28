@@ -1,23 +1,40 @@
-<div   style="background-color:blue;" >
-    <h1>Unesite datum i vreme utakmice</h1>
-<form  [formGroup]="form"  >
-    <input   placeholder="Unesite datum"  type="date"  formControlName="datum" />
-    <input   placeholder="Unesite vreme"  type="time"   formControlName="vreme" />
-    <select    formControlName="tim1"    >
+     
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form"  >
+        <h2>Unesite podatke  o utakmici</h2>
+        <mat-form-field>
+          <input  matInput  placeholder="Datum utakmice"   [matDatepicker]="picker"      formControlName="datum">
+          <mat-hint>YYYY-MM-DD</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Vreme utakmice"  type="time"   formControlName="vreme"> 
+        </mat-form-field> 
+        
+  <mat-form-field>
+    <mat-label>Izaberite tim</mat-label>
+    <select    formControlName="tim1"   matNativeControl required >
         <option  *ngFor="let team of teams"   [ngValue]="team.id" style="background-color: red;">
             Ime tima1 je:{{team.naziv}}
         </option>
     </select>
-    <select    formControlName="tim2"     >
-        <option   *ngFor="let team of teams"   [ngValue]="team.id" style="background-color: red;"    >
-            Ime tima2 je:{{team.naziv}}
-        </option>
-    </select>
-    <button  (click)="onClick()"   >Unesi</button>
-</form>
+  </mat-form-field>
 
-    
+  <mat-form-field>
+    <mat-label>Izaberite tim</mat-label>
+  <select    formControlName="tim2"    matNativeControl required >
+    <option   *ngFor="let team of teams"   [ngValue]="team.id" style="background-color: red;"    >
+        Ime tima2 je:{{team.naziv}}
+    </option>
+</select>
+</mat-form-field>
+<button  mat-raised-button color="primary" (click)="onClick()"   >Unesi</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <div  *ngIf="allow==false" >
+    <h1>Tim je zauzet tog datuma</h1>
     </div>
-<div  *ngIf="allow==false" >
-<h1>Tim je zauzet tog datuma</h1>
-</div>
+    

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { Tim } from 'src/app/Interfejsi/Tim';
 import { AdminService } from 'src/app/admin.service';
 import { PrijavaService } from 'src/app/prijava.service';
@@ -33,8 +34,8 @@ name:new FormControl('',[Validators.required]),
 dateOfEstablishment:new FormControl('',[Validators.required]),
 city:new FormControl('',[Validators.required]),
 logo:new FormControl('',[Validators.minLength(3)]),
-idMenadzera:new FormControl('',[])
-
+idMenadzera:new FormControl('',[]),
+val:new FormControl('Izaberite fajl',[])
 
 
 
@@ -71,18 +72,21 @@ managers:any
 
   }
 selectedFile:any
+
 onFileSelected(event: any) {
   const file: File = event.target.files[0];
   //this.uploadImage(file);
 this.selectedFile=file
   console.log(file+"ddddd")
-
-  console.log(event.target.files[0]+"dddddeeeee")
+this.Val?.setValue(event.target.files[0].name!)
+console.log(this.Val?.value+"tttttt")
+  console.log(event.target.files[0].name+"dddddeeeee")
 }
 
 
 imageUrl:any
 async uploadImage() {
+  
   this.admService.uploadImage(this.selectedFile).subscribe(
     response => {
       console.log(response);
@@ -119,7 +123,7 @@ async addTeams()
       this.team={
          id:0,
         naziv:this.Name?.value!,
-        datumOsnivanja:this.DateOfEstablishment?.value!,
+        datumOsnivanja:moment(this.DateOfEstablishment?.value!).format("YYYY-MM-DD"),
         grad:this.City?.value!,
         logo:this.imageUrl!,
         idMenadzera:+this.IdMenadzera?.value!
@@ -183,6 +187,12 @@ get Logo()
   return this.form.get('logo')
 }
 
+
+
+get Val()
+{
+  return this.form.get('val')
+}
 
 
 

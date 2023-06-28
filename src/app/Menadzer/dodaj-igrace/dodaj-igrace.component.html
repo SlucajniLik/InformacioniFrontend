@@ -1,27 +1,28 @@
-<form  [formGroup]="form">
-    <input placeholder="Unesite ime" formControlName="name">
-    <input placeholder="Unesite prezime" formControlName="surname">
-    <input placeholder="Unesite datum" type="date" formControlName="dateBirth">
-    <select  formControlName="pozicija"   >
-     <option  *ngFor="let pozicija of pozicije" [ngValue]="pozicija" >{{pozicija}}</option>
-    </select>
-    <button (click)="addPlayer()"  >Posalji</button>
+          
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form"  >
+      <h2>Unesite podatke  o igracu</h2>
+      <mat-form-field>
+        <input matInput  placeholder="Ime igraca" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+          <input  matInput placeholder="Prezime igraca" formControlName="surname">
+          </mat-form-field>
+          <mat-form-field>
+          <input  matInput   placeholder="Datum rodjenja" [matDatepicker]="picker" formControlName="dateBirth">
+          <mat-hint>YYYY-MM-DD</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+<mat-form-field>
+  <mat-label>Izaberite poziciju</mat-label>
+<select  formControlName="pozicija" matNativeControl required   >
+  <option  *ngFor="let pozicija of pozicije" [ngValue]="pozicija" >{{pozicija}}</option>
+ </select>
+ 
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="addPlayer()"  >Unesite igraca</button>
     </form>
-    
-    <diV  *ngIf="Name?.touched"  >
-      <div   [style.backgroundColor]="'red'"  *ngIf="Name?.errors?.['required']"  >Polje za ime je obavezno</div>
-
-     </diV>
-    
-    
-    
-     <diV  *ngIf="Surname?.touched"  >
-       <div  [style.backgroundColor]="'red'"  *ngIf="Surname?.errors?.['minlength']"  >Polje za prezime mora imati makar 2 karaktera</div>
-     </diV>
-    
-    
-    
-    
-     <diV  *ngIf="DateBirth?.touched"  >
-       <div  [style.backgroundColor]="'red'"  *ngIf="DateBirth?.errors?.['maxlength']"  >Polje za datum mora imati max 3 kraktera</div>
-     </diV>
+  </mat-card-content>
+</mat-card>

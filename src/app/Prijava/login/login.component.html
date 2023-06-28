@@ -1,23 +1,23 @@
-<form  [formGroup]="form" >
-    <div >
-      <h1>Ulogujte se</h1>
-      <p>Popunite polja</p>
-      <hr>
 
-
-      <label for="prezime"><b>Korisnicko ime</b></label>
-      <input type="text" formControlName="username" placeholder="Unesite korisnicko ime" name="korisnickoIme" id="korisnickoIme" required>
-
-
-      <label for="lozinka"><b>Lozinka</b></label>
-      <input type="text" formControlName="password"  placeholder="Unesite lozinku" name="lozinka" id="lozinka" required>
-
-     
-      
-
-     
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form"  >
+        <h2>Ulogujte se</h2>
+       <!---- <mat-error >
+          The username and password were not recognized
+        </mat-error>-->
+        <mat-form-field>
+          <input matInput placeholder="Korisnicko ime"     formControlName="username" >
+         
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password"   formControlName="password" placeholder="Lozinka">
+         
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="login()">Ulogujte se</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
   
-      <button (click)="login()" >Ulogujte se</button>
-    </div>
-  </form>
 
+  

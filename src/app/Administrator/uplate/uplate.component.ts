@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
@@ -76,7 +77,7 @@ MemberPay()
 
 this.payment={
 
-datumPlacanja:this.Datum?.value!,
+datumPlacanja:moment(this.Datum?.value!).format("YYYY-MM-DD"),
 suma:this.Suma?.value!,
 idNavijaca:+this.route.snapshot.paramMap.get("id")!
 }

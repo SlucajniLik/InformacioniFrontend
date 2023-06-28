@@ -1,27 +1,28 @@
-<form  [formGroup]="form" >
-  <div >
-    <h1>Ulogujte se</h1>
-    <p>Popunite polja</p>
-    <hr>
-
-
-    <label for="home-score">{{tim1}}:</label>
-    <input type="number"  formControlName="resultTim1"    id="home-score" name="home-score" min="0" max="20" step="1" placeholder="Home" required>
-    
-    <label for="away-score">{{tim2}}:</label>
-    <input type="number"    formControlName="resultTim2" id="away-score" name="away-score" min="0" max="20" step="1" placeholder="Away" required>
-    
-   
-
-    <input type="text" formControlName="redCard"  placeholder="Unesite broj crvenih kartona" name="lozinka" id="lozinka" required>
-    <input type="text" formControlName="yellowCard"  placeholder="Unesite broj zutih kartona" name="lozinka" id="lozinka" required>
 
 
 
+     
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form"  >
+      <h2>Unesite podatke  o utakmici</h2>
+      <mat-form-field>
+        <input matInput type="number"  formControlName="resultTim1"    id="home-score" name="home-score" min="0" max="20" step="1" placeholder="Rezultat: {{tim1}}" >
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input matInput  type="number"    formControlName="resultTim2" id="away-score" name="away-score" min="0" max="20" step="1" placeholder="Rezultat: {{tim2}}" >  
+      </mat-form-field>
 
+      <mat-form-field>
+        <input matInput   type="text" formControlName="redCard"  placeholder="Broj crvenih kartona" name="lozinka" id="lozinka" >  
+      </mat-form-field>
 
-    <button (click)="EditDataMatch()" >Ulogujte se</button>
-  </div>
-</form>
+      <mat-form-field>
+        <input  matInput type="text" formControlName="yellowCard"  placeholder="Broj zutih kartona" name="lozinka" id="lozinka" >  
+      </mat-form-field>
 
-
+<button  mat-raised-button color="primary" (click)="EditDataMatch()"   >Izmenite podatke</button>
+    </form>
+  </mat-card-content>
+</mat-card>
