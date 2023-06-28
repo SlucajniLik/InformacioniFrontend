@@ -14,8 +14,10 @@ export class ListaRezultata2Component {
   {
   }
   
-  results?:any[]
-  
+  results?:any=[]
+  displayColumn=['sezona','brOdigranihSusreta'
+,'brPobeda','brNeresenih','brIzgubljenih','brBodova'
+]
     ngOnInit(): void {
       this.admServ.getResults(+this.route.snapshot.paramMap.get("id")!).subscribe(
         (res:any)=>{this.results=res

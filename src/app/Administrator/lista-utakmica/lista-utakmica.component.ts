@@ -14,8 +14,10 @@ export class ListaUtakmicaComponent implements OnInit {
 
 
 
-utakmicaTim?:any[]
-
+utakmicaTim?:any=[]
+displayColumn=['tim1','tim2','datum','vreme','brCrvenihKartona'
+,'brZutihKartona','rezultat','id'
+]
 
 
 

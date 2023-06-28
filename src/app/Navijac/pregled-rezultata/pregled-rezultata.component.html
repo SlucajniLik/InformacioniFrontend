@@ -1,24 +1,69 @@
-<table  *ngIf="resultsLength!>0"   >
-    <tr>
-      <th>Sezona:</th>
-    <th>Broj odigranih susreta:</th>
-    <th>Broj pobeda:</th>
-    <th>Broj neresinh:</th>
-    <th>Broj izgubljenih:</th>
-    <th>Broj bodova:</th>
-    <th>Odigrane utakmice:</th>
-    </tr>
-    <tr  *ngFor="let result of results" style="background-color: red;"  >
-      <td>{{result.sezona}}</td>
-      <td>{{result.brOdigranihSusreta}}</td>
-      <td>{{result.brPobeda}}</td>
-      <td>{{result.brNeresenih}}</td>
-      <td>{{result.brIzgubljenih}}</td>
-      <td>{{result.brBodova}}</td>      
-  <button (click)="viewSeason(result.idTima,result.sezona)">Odigrane utakmice</button>
-    </tr>
+
+    <table mat-table [dataSource]="results"    *ngIf="resultsLength!>0" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
   
+      <ng-container matColumnDef="sezona">
+        <th mat-header-cell *matHeaderCellDef>Sezona</th>
+        <td mat-cell *matCellDef="let result">{{result.sezona}}</td>
+      </ng-container>
+      <ng-container matColumnDef="brOdigranihSusreta">
+        <th mat-header-cell *matHeaderCellDef>Broj odigranih susreta</th>
+        <td mat-cell *matCellDef="let result">{{result.brOdigranihSusreta}}</td>
+      </ng-container>
+      
+    
+      <ng-container matColumnDef="brPobeda">
+        <th mat-header-cell *matHeaderCellDef>Broj pobeda</th>
+        <td mat-cell *matCellDef="let result">{{result.brPobeda}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="brNeresenih">
+        <th mat-header-cell *matHeaderCellDef>Broj neresinh</th>
+        <td mat-cell *matCellDef="let result">{{result.brNeresenih}}</td>
+      </ng-container>
+     
+    
+     
+    
+      <ng-container matColumnDef="brIzgubljenih">
+        <th mat-header-cell *matHeaderCellDef>Broj izgubljenih</th>
+        <td mat-cell *matCellDef="let result">{{result.brIzgubljenih}}</td>
+      </ng-container>
+    
+  
+      <ng-container matColumnDef="brBodova">
+        <th mat-header-cell *matHeaderCellDef>Broj bodova</th>
+        <td mat-cell *matCellDef="let result">{{result.brBodova}}</td>
+      </ng-container>
+  
+     
+  
+  
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Odigrane utakmice</th>
+          <td mat-cell *matCellDef="let result"> <button mat-raised-button color="primary" (click)="viewSeason(result.idTima,result.sezona)" >Odigrane utakmice</button></td>
+        </ng-container>
+  
+       
+  
+  
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
     </table>
+
+
+
+
+
+
+
+
   <div     *ngIf="resultsLength==0">
     <h1>Izvrsite potrebne uplate da biste imali pristup podacima</h1>
   </div>

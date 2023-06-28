@@ -23,7 +23,9 @@
     <span class="menu-spacer"></span>
     <div>
       <a  mat-button   [routerLink]="['dodajIgrace']" routerLinkActive="active"  >Dodaj igrace </a>
-        <a  mat-button   [routerLink]="['listaIgraca']" routerLinkActive="active" >lista Igraca</a>
+        <a  mat-button   [routerLink]="['listaIgraca']" routerLinkActive="active" >Lista Igraca</a>
+        <a  mat-button   [routerLink]="['prvaPostava']" routerLinkActive="active" >Prva postava</a>
+        <a  mat-button   [routerLink]="['drugaPostava']" routerLinkActive="active" >Na klupi</a>
        <!-- <a     [routerLink]="['listaTimova']" routerLinkActive="active" *ngIf="isLogedRole()=='menadzer'">Lista timovaMenadzer</a>-->
         <!--<a     [routerLink]="['menadzerTimovi']" routerLinkActive="active" *ngIf="isLogedRole()=='menadzer'">Timovi Menadzera</a>-->
         <a  mat-button   (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>

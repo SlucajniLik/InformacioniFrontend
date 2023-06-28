@@ -15,8 +15,8 @@ export class NavijaciUplateComponent {
 
   }
 
-members?:any[]
-
+members!:any[]
+displayColumn=['ime','prezime','id']
 
   ngOnInit(): void {
    this.admServ.getMemebersForPay().subscribe(

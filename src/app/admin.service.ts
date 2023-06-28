@@ -197,7 +197,22 @@ return this.http.get(this.url+"getNonApprovedMemebers",{
 
 editMemebers(id:number,status:boolean)
 {
-return this.http.put(this.url+"approveMemebers/"+id+"/"+status,{
+return this.http.put(this.url+"approveMemebers/"+id+"/"+status,"",{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + localStorage.getItem("token"),
+
+  },
+
+},)
+}
+
+
+
+editMemebershipCard(id:number)
+{
+return this.http.put(this.url+"editMemebershipCard/"+id,"",{
 
   headers: {
     'Access-Control-Allow-Origin': '*',

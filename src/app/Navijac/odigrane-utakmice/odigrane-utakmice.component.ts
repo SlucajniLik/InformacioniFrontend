@@ -10,9 +10,12 @@ import { NavijacService } from 'src/app/navijac.service';
 })
 export class OdigraneUtakmiceComponent {
 
-  utakmicaTim?:any[]
+  utakmicaTim!:any[]
 
-
+  displayColumn=['tim1','tim2'
+,'datum','vreme','brCrvenihKartona',
+'brZutihKartona','rezultat'
+]
 
 
 

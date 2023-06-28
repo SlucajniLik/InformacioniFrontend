@@ -13,8 +13,8 @@ export class DozvoliNavijaceComponent implements OnInit {
 
   }
 
-members?:any[]
-
+members!:any[]
+displayColumn=['ime','prezime','id','id2']
 
   ngOnInit(): void {
    this.admServ.getMemebers().subscribe(
@@ -33,6 +33,9 @@ this.admServ.editMemebers(id,status).subscribe(
     if(index!>-1)
     {
       this.members?.splice(index!,1)
+      this.admServ.getMemebers().subscribe(
+        (res:any)=>{this.members=res}
+       )
     }
   }
 )
@@ -49,6 +52,9 @@ rejectMember(id:number,status:boolean)
       if(index!>-1)
       {
         this.members?.splice(index!,1)
+        this.admServ.getMemebers().subscribe(
+          (res:any)=>{this.members=res}
+         )
       }
     }
   )

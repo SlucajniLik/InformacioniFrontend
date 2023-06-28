@@ -23,7 +23,8 @@ export class ListaTimovaNavijacComponent {
 
   }
 
-  teams?:any[]
+  teams!:any[]
+  displayColumn=['logo','naziv','datum','grad','id']
 status:boolean=false;
     ngOnInit(): void {
 

@@ -18,7 +18,8 @@ export class DrugaPostavaComponent {
   }
   
   
-    players?:any[]
+    players!:any[]
+    displayColumn=['ime','datumRodjenja','pozicija','id','id2']
   myTeam:any
     ngOnInit(): void {
   
@@ -59,7 +60,29 @@ const index=this.players?.findIndex(t=>t.id==id)
 
 if(index!>-1)
 {
-     this.players?.splice(index!,1)
+     this.players=this.players?.splice(index!,1)
+
+
+
+     this.prijavaServ.getInformation().subscribe(
+  
+      (ress:any)=>{
+  
+        this.menService.getManagerTeam(ress.userId).subscribe(
+          res=>{this.myTeam=res
+
+            this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
+              (res:any)=>{this.players=res
+        
+              }
+            )
+       
+         
+         }
+       
+           )
+      }
+     )  
 }
 }
 

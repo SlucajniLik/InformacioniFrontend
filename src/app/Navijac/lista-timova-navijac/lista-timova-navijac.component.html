@@ -1,20 +1,68 @@
-<table>
-    <tr>
-    <th>Ime tima:</th>
-    <th>Datum osnivanja:</th>
+
+    <table mat-table [dataSource]="teams" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+    
+      <!-- Position Column -->
   
-    <th>Grad:</th>
-    <th>Logo:</th>
-    </tr>
-    <tr  *ngFor="let team of teams" style="background-color: red;"  >
-      <td   (click)="ChoseTeam(team.id)"  style="background-color:blue;"  >{{team.naziv}}</td>
-      <td>{{team.datumOsnivanja}}</td>
-      <td>{{team.grad}}</td>
-      <img   style="height: 50px;" [src]="team.logo"/>
+      <ng-container matColumnDef="logo">
+        <th mat-header-cell *matHeaderCellDef>Logo</th>
+        <td mat-cell *matCellDef="let team"><img   [src]="team.logo"/></td>
+      </ng-container>
+      <ng-container matColumnDef="naziv">
+        <th mat-header-cell *matHeaderCellDef>Ime tima</th>
+        <td mat-cell *matCellDef="let team">{{team.naziv}}</td>
+      </ng-container>
+      
+    
+      <ng-container matColumnDef="datum">
+        <th mat-header-cell *matHeaderCellDef>Datum osnivanja</th>
+        <td mat-cell *matCellDef="let team">{{team.datumOsnivanja}}</td>
+      </ng-container>
   
-    </tr>
+      <ng-container matColumnDef="grad">
+        <th mat-header-cell *matHeaderCellDef>Grad</th>
+        <td mat-cell *matCellDef="let team">{{team.grad}}</td>
+      </ng-container>
+     
+    
+     
+    
+     
   
+  
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Unos</th>
+          <td mat-cell *matCellDef="let team"> <button mat-raised-button color="primary" (click)="ChoseTeam(team.id)"  >Izaberite tim</button></td>
+        </ng-container>
+  
+       
+  
+  
+  
+  
+      <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
     </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <h1  *ngIf="status==true"   >Izvrsite uplatu</h1>

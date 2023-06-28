@@ -34,11 +34,17 @@ addMonths(date:any,months:any) {
  datePipe = new DatePipe('en-US');
   ngOnInit(): void {
         this.admServ.getPayment(+this.route.snapshot.paramMap.get("id")!).subscribe(
-          (res:any)=>{this.paymentMember=res
-            this.datee=new Date(res.datumPlacanja)
-            this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
-            this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
-          console.log(this.datee2)
+          (res:any)=>{
+            
+            if(res)
+            {
+              this.paymentMember=res
+              this.datee=new Date(res.datumPlacanja)
+              this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
+              this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
+            console.log(this.datee2)
+            }
+           
           }
         )
   }
@@ -46,7 +52,7 @@ form=new FormGroup(
   {
    datum:new FormControl('',[]),
    suma:new FormControl('',[]),
- 
+    
   }
 )
 
@@ -81,20 +87,34 @@ datumPlacanja:moment(this.Datum?.value!).format("YYYY-MM-DD"),
 suma:this.Suma?.value!,
 idNavijaca:+this.route.snapshot.paramMap.get("id")!
 }
-this.admServ.addPayment(this.payment).subscribe(
-  res=>{console.log(res)
-  
-    this.admServ.getPayment(+this.route.snapshot.paramMap.get("id")!).subscribe(
-      (res:any)=>{this.paymentMember=res
-        this.datee=new Date(res.datumPlacanja)
-        this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
-        this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
-      console.log(this.datee2)
+
+
+this.admServ.editMemebershipCard(+this.route.snapshot.paramMap.get("id")!).subscribe(
+
+  ress=>{
+
+
+    this.admServ.addPayment(this.payment).subscribe(
+      res=>{console.log(res)
+      
+        this.admServ.getPayment(+this.route.snapshot.paramMap.get("id")!).subscribe(
+          (res:any)=>{this.paymentMember=res
+            this.datee=new Date(res.datumPlacanja)
+            this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
+            this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
+          console.log(this.datee2)
+          }
+        )
+      
       }
     )
-  
+
   }
 )
+
+
+
+
 
 
 

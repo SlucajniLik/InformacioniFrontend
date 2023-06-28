@@ -71,6 +71,10 @@ console.log(this.resp+"aaaa")
 
         console.log("Jos uvek niste odobreni")
      }
+     else if(res=="nel")
+     {
+      console.log("korisnik ne postoji u bazi")
+     }
      else if(res)
      {
              

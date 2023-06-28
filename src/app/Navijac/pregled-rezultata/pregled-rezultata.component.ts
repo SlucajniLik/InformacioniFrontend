@@ -15,6 +15,8 @@ export class PregledRezultataComponent {
  
        
   }
+
+  
   paymentMember:any={
     ime:'',
     prezime:'',
@@ -40,12 +42,14 @@ export class PregledRezultataComponent {
 
 
 
-
+  displayColumn=['sezona','brOdigranihSusreta'
+,'brPobeda','brNeresenih','brIzgubljenih','brBodova','id'
+]
 
 
   datePipe = new DatePipe('en-US');
   teamId?:number
-  results?:any[]
+  results!:any[]
 resultsLength?:number;
   addMonths(date:any,months:any) {
     date.setMonth(date.getMonth() + months);
@@ -66,58 +70,46 @@ this.navServ.getTeamsMemberInformation(this.user.userId).subscribe(
 
     this.teamId=res.idTima
 
-
-    this.navServ.getMemberData(this.teamId!).subscribe(
+console.log(this.teamId+"sssssss")
+    this.navServ.getMemberData(this.user.userId!).subscribe(
       (res:any)=>{
-        this.datee=new Date(res.datumPlacanja)
-        this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
-        this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
+     if(res==null)
+     {
+      this.resultsLength=0
+     }
+     else
+     {
 
-    const currentDate=new Date()
-    const currentDateFormed=this.datePipe.transform(currentDate,'yyyy-MM-dd')
-    console.log(currentDateFormed);
-      if(currentDateFormed!<=this.datee2)
-      {
-        //this.paymentMember=res
+      console.log(res+"ddddd")
+      this.datee=new Date(res.datumPlacanja)
+      this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
+      this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
 
-        this.navServ.getResultsForMember(this.teamId!).subscribe(
-          (ress:any)=>{this.results=ress
-            this.resultsLength=this.results?.length
-            console.log(this.results!.length+"666ff")
-          }
-        )
-        
-      }
-      else{
-        this.results=[]
-        this.resultsLength=this.results.length
-        console.log(this.resultsLength+"766ff")
-      }
+  const currentDate=new Date()
+  const currentDateFormed=this.datePipe.transform(currentDate,'yyyy-MM-dd')
+  console.log(currentDateFormed);
+    if(currentDateFormed!<=this.datee2)
+    {
+      //this.paymentMember=res
+
+      this.navServ.getResultsForMember(this.teamId!).subscribe(
+        (ress:any)=>{this.results=ress
+          this.resultsLength=this.results?.length
+          console.log(this.results!.length+"666ff")
+        }
+      )
       
+    }
+    else{
+      this.results=[]
+      this.resultsLength=this.results.length
+      console.log(this.resultsLength+"766ff")
+    }
+    
+     }
+
       }
     )
-
-
-
-
-
-
-
- 
-
-
-
-
-
-    //this.teamId=res.idTima
-    
-          
-    
-
-
-
-
-
 
   }
 )        

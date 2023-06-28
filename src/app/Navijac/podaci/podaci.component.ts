@@ -65,8 +65,17 @@ this.navServ.getTeamsMemberInformation(this.user.userId).subscribe(
 
 
 
-        this.navServ.getMemberData(this.teamId).subscribe(
+        this.navServ.getMemberData(this.user.userId).subscribe(
           (res:any)=>{
+
+
+
+            if(res==null)
+            {
+             this.paymentMember=null
+            }
+            else
+            {
             this.datee=new Date(res.datumPlacanja)
             this.datee2=this.addMonths(this.datee,(+res.suma/500)),'yyyy-MM-dd'
             this.datee2=this.datePipe.transform(this.datee2,'yyyy-MM-dd')
@@ -82,8 +91,10 @@ this.navServ.getTeamsMemberInformation(this.user.userId).subscribe(
           else{
             this.paymentMember=null
           }
+        }
           console.log(this.datee2)
           }
+        
         )
 
 
