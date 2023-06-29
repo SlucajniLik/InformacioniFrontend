@@ -21,6 +21,8 @@ export class DrugaPostavaComponent {
     players!:any[]
     displayColumn=['ime','datumRodjenja','pozicija','id','id2']
   myTeam:any
+  playersCountLineUp:any
+  err:any=false
     ngOnInit(): void {
   
       this.prijavaServ.getInformation().subscribe(
@@ -32,6 +34,15 @@ export class DrugaPostavaComponent {
   
               this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
                 (res:any)=>{this.players=res
+          
+                }
+              )
+
+
+              this.menService.getLineUpPlayers(true,this.myTeam.id).subscribe(
+                (res:any)=>{this.playersCountLineUp=res.length
+  
+                  console.table(this.playersCountLineUp)
           
                 }
               )
@@ -49,41 +60,95 @@ export class DrugaPostavaComponent {
     
 setLineUp(id:number,type?:boolean)
 {
-
-this.menService.setLineUp(id,type).subscribe(
-  res=>{console.log(res)}
-)
-
-
-const index=this.players?.findIndex(t=>t.id==id)
-
-
-if(index!>-1)
+if(type==true)
 {
-     this.players=this.players?.splice(index!,1)
-
-
-
-     this.prijavaServ.getInformation().subscribe(
+if(this.playersCountLineUp<=11)
+{
+  this.menService.setLineUp(id,type).subscribe(
+    res=>{console.log(res)}
+  )
   
-      (ress:any)=>{
   
-        this.menService.getManagerTeam(ress.userId).subscribe(
-          res=>{this.myTeam=res
-
-            this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
-              (res:any)=>{this.players=res
-        
-              }
-            )
-       
+  const index=this.players?.findIndex(t=>t.id==id)
+  
+  
+  if(index!>-1)
+  {
+       this.players=this.players?.splice(index!,1)
+  
+  
+  
+       this.prijavaServ.getInformation().subscribe(
+    
+        (ress:any)=>{
+    
+          this.menService.getManagerTeam(ress.userId).subscribe(
+            res=>{this.myTeam=res
+  
+              this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
+                (res:any)=>{this.players=res
+          
+                }
+              )
          
-         }
-       
-           )
-      }
-     )  
+           
+           }
+         
+             )
+        }
+       )  
+  }
+
+
 }
+else
+{
+  this.err=true
+}
+
+}
+else
+{
+
+
+  this.menService.setLineUp(id,type).subscribe(
+    res=>{console.log(res)}
+  )
+  
+  
+  const index=this.players?.findIndex(t=>t.id==id)
+  
+  
+  if(index!>-1)
+  {
+       this.players=this.players?.splice(index!,1)
+  
+  
+  
+       this.prijavaServ.getInformation().subscribe(
+    
+        (ress:any)=>{
+    
+          this.menService.getManagerTeam(ress.userId).subscribe(
+            res=>{this.myTeam=res
+  
+              this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
+                (res:any)=>{this.players=res
+          
+                }
+              )
+         
+           
+           }
+         
+             )
+        }
+       )  
+  }
+
+
+}
+
 }
 
 

@@ -67,12 +67,14 @@ this.prijavaserv.login(this.user).subscribe(
 console.log(this.resp+"aaaa")
 
      if(res=="ne")
-     {
+     {this.nonAllow=false
+      this.notExist=false
       this.wrongPassword=true
   console.log("pogresna sifra")
      }
      else if(res=="nonAllowed")
-     {
+     {this.notExist=false
+      this.wrongPassword=false
        this.nonAllow=true
         console.log("Jos uvek niste odobreni")
      }
@@ -80,10 +82,13 @@ console.log(this.resp+"aaaa")
      {
       console.log("korisnik ne postoji u bazi")
       this.notExist=true
+      this.nonAllow=false
+      this.wrongPassword=false
      }
      else if(res)
      {
-             
+      if(this.form.status.toString()=="VALID")
+      {
           localStorage.setItem("token",res)   
             
          
@@ -126,6 +131,8 @@ console.log(this.resp+"aaaa")
          }
        )
          }
+
+        }
      }
   }
 )

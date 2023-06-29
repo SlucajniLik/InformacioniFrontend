@@ -1,40 +1,56 @@
-     
+
 <mat-card>
     <mat-card-content>
-      <form [formGroup]="form"  >
+      <form [formGroup]="form"   >
         <h2>Unesite podatke  o utakmici</h2>
         <mat-form-field>
           <input  matInput  placeholder="Datum utakmice"   [matDatepicker]="picker"      formControlName="datum">
           <mat-hint>YYYY-MM-DD</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error   *ngIf="Datum?.touched && Datum?.errors?.['required']&& success==false" >
+            Datum je obavezan
+          </mat-error>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Vreme utakmice"  type="time"   formControlName="vreme"> 
+          <mat-error   *ngIf="Vreme?.touched && Vreme?.errors?.['required']&& success==false" >
+            Vreme je obavezno
+          </mat-error>
         </mat-form-field> 
         
-  <mat-form-field>
-    <mat-label>Izaberite tim</mat-label>
-    <select    formControlName="tim1"   matNativeControl required >
-        <option  *ngFor="let team of teams"   [ngValue]="team.id" style="background-color: red;">
-            Ime tima1 je:{{team.naziv}}
+  <mat-form-field >
+    <mat-label>Izaberite prvi tim</mat-label>
+    <select    formControlName="tim1" (click)="checkTeams()"  matNativeControl required >
+        <option  *ngFor="let team of teams1"   [ngValue]="team.id" >
+          {{team.naziv}}
         </option>
     </select>
+    <mat-error   *ngIf="Tim1?.touched && Tim1?.errors?.['required']&& success==false" >
+      Izaberite prvi tim
+    </mat-error>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Izaberite tim</mat-label>
-  <select    formControlName="tim2"    matNativeControl required >
-    <option   *ngFor="let team of teams"   [ngValue]="team.id" style="background-color: red;"    >
-        Ime tima2 je:{{team.naziv}}
+  <mat-form-field  >
+    <mat-label>Izaberite drugi tim</mat-label>
+  <select    formControlName="tim2" (click)="checkTeams()"  matNativeControl required >
+    <option   *ngFor="let team of teams2" [ngValue]="team.id"     >
+       {{team.naziv}}
     </option>
 </select>
+
+<mat-error   *ngIf="Tim2?.touched && Tim2?.errors?.['required']&& success==false" >
+  Izaberite drugi  tim
+</mat-error>
+
+<mat-error  *ngIf="allow==false">
+  Tim je zauzet tog datuma
+</mat-error>
+
+<p  style="color: green;"  *ngIf="success==true" >Uspesno ste uneli podatke</p>
 </mat-form-field>
 <button  mat-raised-button color="primary" (click)="onClick()"   >Unesi</button>
+<p  style="color: red;" *ngIf="check1==true"  >Izaberite dva razlicita tima</p>
       </form>
     </mat-card-content>
   </mat-card>
-  <div  *ngIf="allow==false" >
-    <h1>Tim je zauzet tog datuma</h1>
-    </div>
-    

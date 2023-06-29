@@ -35,6 +35,23 @@ export class AdminService {
 
     },)
   }
+ 
+
+  getTeamsFill(id:number)
+  {
+  return this.http.get(this.url+"getTeamsFil/"+id,{
+
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'bearer ' + localStorage.getItem("token"),
+
+    },
+
+  },)
+}
+
+
+
 
   addMatch(utakmica:Utakmica)
   {

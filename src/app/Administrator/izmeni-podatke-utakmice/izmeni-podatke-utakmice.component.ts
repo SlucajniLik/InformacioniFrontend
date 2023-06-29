@@ -45,8 +45,8 @@ form=new FormGroup(
   {
 redCard:new FormControl('',[Validators.required]),
 yellowCard:new FormControl('',[Validators.required]),
-resultTim1:new FormControl(''),
-resultTim2:new FormControl('')
+resultTim1:new FormControl('',[Validators.required]),
+resultTim2:new FormControl('',[Validators.required])
   }
 )
 
@@ -106,7 +106,7 @@ rezultat2:Rezultat={
   idTima: 0
 }
 
-
+success:any=false
 
 
 
@@ -125,7 +125,8 @@ this.utakmica2=
 }
 
 console.log(this.utakmica2+"ff")
-
+if(this.form.status.toString()=="VALID")
+{
 this.admServ.editMatch(+this.route.snapshot.paramMap.get('id')!,this.utakmica2).subscribe(
 
   (res:any)=>{
@@ -292,8 +293,11 @@ this.rezultat1=res2
       }
   )
 
-
-
+this.ResultTim1?.setValue("")
+this.ResultTim2?.setValue("")
+this.RedCard?.setValue("")
+this.YellowCard?.setValue("")
+this.success=true
 
 
 
@@ -307,7 +311,7 @@ this.rezultat1=res2
 
 
 
-
+}
 
 
 }

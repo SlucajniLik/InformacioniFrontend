@@ -5,24 +5,45 @@
       <h2>Unesite podatke  o igracu</h2>
       <mat-form-field>
         <input matInput  placeholder="Ime igraca" formControlName="name">
+        <mat-error  *ngIf="Name?.touched && Name?.errors?.['required'] && success==false">
+          Ime igraca je obavezno
+        </mat-error>
+        <mat-error  *ngIf="Name?.touched && Name?.errors?.['minlength'] && success==false">
+         Ime mora imati makar tri karaktera
+        </mat-error>
         </mat-form-field>
         <mat-form-field>
           <input  matInput placeholder="Prezime igraca" formControlName="surname">
+          <mat-error  *ngIf="Surname?.touched && Surname?.errors?.['required'] && success==false">
+            Ime igraca je obavezno
+          </mat-error>
+          <mat-error  *ngIf="Surname?.touched && Surname?.errors?.['minlength'] && success==false">
+           Ime mora imati makar tri karaktera
+          </mat-error>
           </mat-form-field>
           <mat-form-field>
           <input  matInput   placeholder="Datum rodjenja" [matDatepicker]="picker" formControlName="dateBirth">
           <mat-hint>YYYY-MM-DD</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error  *ngIf="DateBirth?.touched && DateBirth?.errors?.['required'] && success==false">
+            Unesite datum rodjenja
+           </mat-error>
         </mat-form-field>
 <mat-form-field>
   <mat-label>Izaberite poziciju</mat-label>
 <select  formControlName="pozicija" matNativeControl required   >
   <option  *ngFor="let pozicija of pozicije" [ngValue]="pozicija" >{{pozicija}}</option>
  </select>
- 
+ <mat-error  *ngIf="Pozicija?.touched && Pozicija?.errors?.['required'] && success==false">
+  Unesite poziciju igraca
+ </mat-error>
 </mat-form-field>
 <button mat-raised-button color="primary" (click)="addPlayer()"  >Unesite igraca</button>
+<mat-error  *ngIf="mess==true">
+  Unesite poziciju igraca
+ </mat-error>
+<p style="color: green;" *ngIf="success==true" >Uspesno ste uneli podatke</p>
     </form>
   </mat-card-content>
 </mat-card>

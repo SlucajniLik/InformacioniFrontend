@@ -8,21 +8,34 @@
       <h2>Unesite podatke  o utakmici</h2>
       <mat-form-field>
         <input matInput type="number"  formControlName="resultTim1"    id="home-score" name="home-score" min="0" max="20" step="1" placeholder="Rezultat: {{tim1}}" >
+        <mat-error  *ngIf="ResultTim1?.touched && ResultTim1?.errors?.['required'] && success==false">
+          Unesite rezultat prvog tima
+        </mat-error>
       </mat-form-field>
       
       <mat-form-field>
-        <input matInput  type="number"    formControlName="resultTim2" id="away-score" name="away-score" min="0" max="20" step="1" placeholder="Rezultat: {{tim2}}" >  
+        <input matInput  type="number"    formControlName="resultTim2" id="away-score" name="away-score" min="0" max="20" step="1" placeholder="Rezultat: {{tim2}}" >
+        <mat-error  *ngIf="ResultTim2?.touched && ResultTim2?.errors?.['required']&& success==false">
+         Unesite rezultat prvog tima
+        </mat-error>  
       </mat-form-field>
 
       <mat-form-field>
         <input matInput   type="text" formControlName="redCard"  placeholder="Broj crvenih kartona" name="lozinka" id="lozinka" >  
+        <mat-error  *ngIf="RedCard?.touched && RedCard?.errors?.['required']&& success==false">
+          Unesite broj crvenih kartona
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input  matInput type="text" formControlName="yellowCard"  placeholder="Broj zutih kartona" name="lozinka" id="lozinka" >  
+        <input  matInput type="text" formControlName="yellowCard"  placeholder="Broj zutih kartona" name="lozinka" id="lozinka" >
+        <mat-error  *ngIf="YellowCard?.touched && YellowCard?.errors?.['required']&& success==false">
+          Unesite broj zutih kartona
+        </mat-error>  
       </mat-form-field>
 
 <button  mat-raised-button color="primary" (click)="EditDataMatch()"   >Izmenite podatke</button>
+<p  style="color:green"  *ngIf="success==true"  >Uspeno ste uneli podatke</p>
     </form>
   </mat-card-content>
 </mat-card>

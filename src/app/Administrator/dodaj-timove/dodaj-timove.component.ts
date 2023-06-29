@@ -30,11 +30,11 @@ export class DodajTimoveComponent implements OnInit {
 
 }
 form=new FormGroup({
-name:new FormControl('',[Validators.required]),
+name:new FormControl('',[Validators.required,Validators.minLength(3)]),
 dateOfEstablishment:new FormControl('',[Validators.required]),
-city:new FormControl('',[Validators.required]),
-logo:new FormControl('',[Validators.minLength(3)]),
-idMenadzera:new FormControl('',[]),
+city:new FormControl('',[Validators.required,Validators.minLength(3)]),
+logo:new FormControl('',[Validators.required]),
+idMenadzera:new FormControl('',[Validators.required]),
 val:new FormControl('Izaberite fajl',[])
 
 
@@ -79,6 +79,14 @@ onFileSelected(event: any) {
 this.selectedFile=file
   console.log(file+"ddddd")
 this.Val?.setValue(event.target.files[0].name!)
+if(this.Val?.value=="Izaberite fajl")
+{
+  this.checkImg=true
+}
+else
+{
+  this.checkImg=false
+}
 console.log(this.Val?.value+"tttttt")
   console.log(event.target.files[0].name+"dddddeeeee")
 }
@@ -104,13 +112,23 @@ async uploadImage() {
 }
 
 
+alredyExist:boolean=false;
+success:boolean=false
 
+checkImg:boolean=false
 async addTeams()
 {
 
   this.admService.uploadImage(this.selectedFile).subscribe(
     response => {
       console.log(response);
+ if(response=="no")
+ {
+this.alredyExist=true
+
+ }     
+else
+{
 
 
         this.imageUrl = response;
@@ -136,12 +154,22 @@ async addTeams()
 
 
 
+      if(this.form.status.toString()=="VALID")
+      {
       this.admService.addTeams(this.team).subscribe(
-        res=>{console.log(res)},
+        res=>{console.log(res)
+        
+        this.success=true
+        this.Name?.setValue("")
+         this.City?.setValue("")
+         this.Logo?.setValue("")
+         this.DateOfEstablishment?.setValue("")
+         this.IdMenadzera?.setValue("")
+        },
         error=>{console.log(error)}
       )
-
-
+      }
+      }
 
     },
     error => {
@@ -152,7 +180,7 @@ async addTeams()
 
 
 
-
+  
 
 
 

@@ -11,13 +11,20 @@
           <mat-hint>YYYY-MM-DD</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error  *ngIf="Datum?.touched && Datum?.errors?.['required']&& success==false">
+            Unesite datum
+          </mat-error>
         </mat-form-field>
        
         <mat-form-field>
-          <input matInput placeholder="Suma" formControlName="suma"  >
+          <input matInput placeholder="Suma" formControlName="suma"   >
+          <mat-error  *ngIf="Suma?.touched && Suma?.errors?.['required'] && success==false">
+            Unesite sumu
+          </mat-error>
         </mat-form-field>
        
         <button mat-raised-button color="primary" (click)="MemberPay()">Unesite sumu</button>
+        <p  style="color:green" *ngIf="success==true" >Uspesno ste uneli podatke</p>
       </form>
     </mat-card-content>
   </mat-card>

@@ -20,8 +20,12 @@ displayColumn=['tim1','tim2','datum','vreme','brCrvenihKartona'
 ]
 
 
+checkk:any=false
+dropTable()
+{
+  this.checkk=!this.checkk
 
-
+}
 
 
 
@@ -36,8 +40,6 @@ this.admServ.getMatch().subscribe(
   (res:any)=>{
 
 this.utakmicaTim=res
-
-
 
 
     console.log(this.utakmicaTim)

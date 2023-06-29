@@ -1,13 +1,6 @@
-
-
-
-
-<table mat-table [dataSource]="utakmicaTim" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
+<div     (click)="dropTable()"  >
+  a
+<table mat-table [dataSource]="utakmicaTim" class="mat-elevation-z8"  *ngIf="checkk==true">
 
     <ng-container matColumnDef="tim1">
       <th mat-header-cell *matHeaderCellDef>Tim1</th>
@@ -51,7 +44,7 @@
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Unos</th>
-        <td mat-cell *matCellDef="let i"> <button mat-raised-button color="primary" (click)="ChangeMatchData(i.utakmica.id,i.utakmica.idTima1,i.utakmica.idTima2,i.tim1,i.tim2)"  >Unesi rezultate</button></td>
+        <td mat-cell *matCellDef="let i"   > <button   *ngIf="i.utakmica.rezultat==0" mat-raised-button color="primary" (click)="ChangeMatchData(i.utakmica.id,i.utakmica.idTima1,i.utakmica.idTima2,i.tim1,i.tim2)"  >Unesi rezultate</button></td>
       </ng-container>
 
      
@@ -62,3 +55,4 @@
     <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
   </table>
+  </div>

@@ -26,10 +26,10 @@ player:Igrac={
 
 }
 form=new FormGroup({
-name:new FormControl('',[Validators.required]),
-surname:new FormControl('',[Validators.required]),
-dateBirth:new FormControl('',[Validators.minLength(3)]),
-pozicija:new FormControl('',[])
+name:new FormControl('',[Validators.required,Validators.minLength(3)]),
+surname:new FormControl('',[Validators.required,Validators.minLength(3)]),
+dateBirth:new FormControl('',[Validators.required]),
+pozicija:new FormControl('',[Validators.required])
 
 
 
@@ -46,6 +46,9 @@ constructor(private menService:MenadzerService,private route:ActivatedRoute,priv
    this.prijavaServ.getInformation().subscribe(
 
     (ress:any)=>{
+
+
+
       console.log("dddddddi"+ress)
       this.menService.getManagerTeam(ress.userId).subscribe(
         res=>{this.myTeam=res
@@ -57,8 +60,12 @@ constructor(private menService:MenadzerService,private route:ActivatedRoute,priv
     }
    )  
   }
-pozicije:any[]=["pozicija1","pozicija2","pozicija3"]
-
+pozicije:any[]=["Golman ","Centralni bek","Levi bek","Desni bek"
+,'Centralni vezni igrac','Defanzivni vezni igrac','Ofanzivni vezni igrac'
+,' Krilni vezni igrac','Prvi napadac','Drugi napadac','Treci napadac'
+]
+success:any=false
+mess:any=false
 addPlayer()
 {
 console.log(this.route.snapshot.paramMap.get("id")+"ffffffffffffffs")
@@ -78,11 +85,28 @@ this.player={
 
 
 
+if(this.form.status.toString()=="VALID")
+{
 this.menService.addPlayer(this.player).subscribe(
-  res=>{console.log(res)},
+  res=>{console.log(res)
+
+    if(res=="no")
+    {
+           this.mess=true
+    }
+    else
+    {
+      this.DateBirth?.setValue("")
+      this.Name?.setValue("")
+      this.Surname?.setValue("")
+      this.Pozicija?.setValue("")
+    this.success=true
+    }
+   
+  },
   error=>{console.log(error)}
 )
-
+}
 
 }
 

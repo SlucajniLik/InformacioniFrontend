@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { AdminService } from 'src/app/admin.service';
@@ -50,8 +50,8 @@ addMonths(date:any,months:any) {
   }
 form=new FormGroup(
   {
-   datum:new FormControl('',[]),
-   suma:new FormControl('',[]),
+   datum:new FormControl('',[Validators.required]),
+   suma:new FormControl('',[Validators.required]),
     
   }
 )
@@ -76,7 +76,7 @@ get Suma()
 payment:any;
 
 
-
+success:any=false
 MemberPay()
 {
 
@@ -88,7 +88,8 @@ suma:this.Suma?.value!,
 idNavijaca:+this.route.snapshot.paramMap.get("id")!
 }
 
-
+if(this.form.status.toString()=="VALID")
+{
 this.admServ.editMemebershipCard(+this.route.snapshot.paramMap.get("id")!).subscribe(
 
   ress=>{
@@ -97,6 +98,10 @@ this.admServ.editMemebershipCard(+this.route.snapshot.paramMap.get("id")!).subsc
     this.admServ.addPayment(this.payment).subscribe(
       res=>{console.log(res)
       
+
+        this.Datum?.setValue("")
+        this.Suma?.setValue("")
+        this.success=true
         this.admServ.getPayment(+this.route.snapshot.paramMap.get("id")!).subscribe(
           (res:any)=>{this.paymentMember=res
             this.datee=new Date(res.datumPlacanja)
@@ -111,7 +116,7 @@ this.admServ.editMemebershipCard(+this.route.snapshot.paramMap.get("id")!).subsc
 
   }
 )
-
+}
 
 
 

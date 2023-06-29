@@ -20,6 +20,8 @@ export class PrvaPostavaComponent {
     players!:any[]
     displayColumn=['ime','datumRodjenja','pozicija','id','id2']
   myTeam:any
+  playersCountBench:any
+  err2:any=false
     ngOnInit(): void {
   
       this.prijavaServ.getInformation().subscribe(
@@ -37,6 +39,11 @@ export class PrvaPostavaComponent {
                 }
               )
          
+              this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
+                (res:any)=>{this.playersCountBench=res.length
+          
+                }
+              )
            
            }
          
@@ -51,6 +58,11 @@ export class PrvaPostavaComponent {
 setLineUp(id:number,type?:boolean)
 {
 
+if(type==false)
+{
+if(this.playersCountBench<=5)
+{
+  
 this.menService.setLineUp(id,type).subscribe(
   res=>{console.log(res)}
 )
@@ -86,6 +98,61 @@ if(index!>-1)
       }
      )  
 }
+
+}
+else
+{this.err2=true}
+
+
+}
+else
+{
+
+
+
+  this.menService.setLineUp(id,type).subscribe(
+    res=>{console.log(res)}
+  )
+  
+  
+  const index=this.players?.findIndex(t=>t.id==id)
+  
+  
+  if(index!>-1)
+  {
+       this.players=this.players?.splice(index!,1)
+  
+  
+       this.prijavaServ.getInformation().subscribe(
+    
+        (ress:any)=>{
+    
+          this.menService.getManagerTeam(ress.userId).subscribe(
+            res=>{this.myTeam=res
+  
+              this.menService.getLineUpPlayers(true,this.myTeam.id).subscribe(
+                (res:any)=>{this.players=res
+  
+                  console.table(this.players)
+          
+                }
+              )
+         
+           
+           }
+         
+             )
+        }
+       )  
+  }
+
+
+
+
+}
+
+
+
 }
 
 

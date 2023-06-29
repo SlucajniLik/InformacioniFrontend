@@ -4,11 +4,15 @@
     <mat-card-content>
       <form [formGroup]="form"  >
         <h2>Dodajte timove</h2>
-       <!---- <mat-error >
-          The username and password were not recognized
-        </mat-error>-->
+      
         <mat-form-field>
           <input matInput formControlName="name"    placeholder="Ime tima"  >
+          <mat-error  *ngIf="Name?.touched && Name?.errors?.['required'] && success==false">
+            Naziv tima je obavezan
+          </mat-error>
+          <mat-error  *ngIf="Name?.touched && Name?.errors?.['minlength'] && success==false">
+            Naziv tima mora imati makar tri karaktera
+          </mat-error>
         </mat-form-field>
        
   
@@ -18,10 +22,19 @@
               <mat-hint>YYYY-MM-DD</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error  *ngIf="DateOfEstablishment?.touched && DateOfEstablishment?.errors?.['required']&& success==false">
+                Datum osnivanja je obavezan
+              </mat-error>
             </mat-form-field>
             
         <mat-form-field>
           <input matInput   placeholder="Grad" formControlName="city">
+          <mat-error  *ngIf="City?.touched && City?.errors?.['required'] && success==false">
+            Naziv tima je obavezan
+          </mat-error>
+          <mat-error  *ngIf="City?.touched && City?.errors?.['minlength'] && success==false">
+            Naziv tima mora imati makar tri karaktera
+          </mat-error>
         </mat-form-field>
         
           
@@ -45,6 +58,9 @@
                 accept="image/*"
               />
             </div>
+            <mat-error  *ngIf="checkImg==true && success==false">
+              Logo tima je obavezan
+            </mat-error>
           </mat-form-field>
         
   <mat-form-field>
@@ -54,8 +70,17 @@
       <option   *ngFor="let manager of managers" [ngValue]="manager.id"  >{{manager.ime+" "+manager.prezime}}</option>
  
      </select>
+     <mat-error  *ngIf="IdMenadzera?.touched && IdMenadzera?.errors?.['required'] && success==false">
+      Izaberite menadzera
+    </mat-error>
   </mat-form-field>
   <button     mat-raised-button color="primary" (click)="addTeams()"  [disabled]="!selectedFile">Unesite podatke</button>
+
+  
+  <mat-error  *ngIf="alredyExist==true">
+    Tim vec postoji
+  </mat-error>
+  <p   *ngIf="success==true"   >Uspesno ste uneli tim </p>
       </form>
     </mat-card-content>
   </mat-card>
