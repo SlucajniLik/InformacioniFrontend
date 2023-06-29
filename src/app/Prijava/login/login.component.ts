@@ -21,7 +21,7 @@ decodededToken:any
 user?:LoginKorisnik
   form=new FormGroup(
     {
-  username:new FormControl('',[Validators.required]),
+  username:new FormControl('',[Validators.required,]),
   password:new FormControl('',[Validators.required]),
   
     }
@@ -44,6 +44,9 @@ user?:LoginKorisnik
 token:any
 nonAllowed:any;
 resp?:any
+wrongPassword:boolean=false
+nonAllow:boolean=false
+notExist:boolean=false
 login()
 {
 
@@ -62,18 +65,21 @@ this.prijavaserv.login(this.user).subscribe(
   (res:any)=>{
     this.resp=res
 console.log(this.resp+"aaaa")
-    if(res=="ne")
+
+     if(res=="ne")
      {
-      console.log("Korisnik vec postoji u bazi")
+      this.wrongPassword=true
+  console.log("pogresna sifra")
      }
      else if(res=="nonAllowed")
      {
-
+       this.nonAllow=true
         console.log("Jos uvek niste odobreni")
      }
      else if(res=="nel")
      {
       console.log("korisnik ne postoji u bazi")
+      this.notExist=true
      }
      else if(res)
      {

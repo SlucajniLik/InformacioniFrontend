@@ -1,17 +1,4 @@
 
-<div>    
-<h1>Ime je :{{paymentMember.ime}}</h1>
-<h1>Prezime je :{{paymentMember.prezime}}</h1>
-<h1>Datum placanja  je :{{paymentMember.datumPlacanja}}</h1>
-<h1>Datum vazenja  je :{{datee2}}</h1>
-<h1>Suma je :{{paymentMember.suma}}</h1>
-<h1>Broj clanske je :{{paymentMember.brojClanske}}</h1>
-
-</div>
-
-
-
-
 <mat-card>
     <mat-card-content>
       <form [formGroup]="form"  >
@@ -35,5 +22,31 @@
     </mat-card-content>
   </mat-card>
   
+
+  <mat-card>
+     
+    <mat-card-content>
+        <h2><strong>Broj clanske karte:</strong>{{paymentMember.brojClanske}}</h2>
+    </mat-card-content>
+    <mat-card-content>
+        <h2><strong>Ime clana:</strong>{{paymentMember.ime+" "+paymentMember.prezime}}</h2>
+    </mat-card-content>
+  
+    <mat-card-content>
+ <h2><strong>Ime kluba:</strong>{{paymentMember.imeTima}}</h2>
+    </mat-card-content>
+    <mat-card-content>
+    <h2>Uplacena suma:{{paymentMember.suma}}</h2>
+  </mat-card-content>
+    <mat-card-content>
+        <h2><strong>Datum placanja:</strong>:{{paymentMember.datumPlacanja}}</h2>
+    </mat-card-content>
+    <mat-card-content>
+        <h2><strong>Datum isteka:</strong>{{datee2}}</h2>
+    </mat-card-content>
+
+   
+   
+  </mat-card>
 
   

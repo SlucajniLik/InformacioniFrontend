@@ -3,21 +3,54 @@
     <mat-card-content>
       <form [formGroup]="form"  >
         <h2>Registrujte se</h2>
-       <!---- <mat-error >
-          The username and password were not recognized
-        </mat-error>-->
+      
         <mat-form-field>
           <input matInput formControlName="name"     placeholder="Ime"  >
+          <mat-error   *ngIf="Name?.touched && Name?.errors?.['required']&& success==false" >
+            Polje za ime je obavezno
+          </mat-error>
+          <mat-error   *ngIf="Name?.touched && Name?.errors?.['minlength']&& success==false" >
+            Polje za ime mora imati bar tri karaktera
+          </mat-error>
         </mat-form-field>
+        
         <mat-form-field>
           <input matInput   formControlName="surname"   placeholder="Prezime">
+          <mat-error   *ngIf="Surname?.touched && Surname?.errors?.['required']&& success==false" >
+            Polje za prezime je obavezno
+          </mat-error>
+          <mat-error   *ngIf="Surname?.touched && Surname?.errors?.['minlength']&& success==false" >
+            Polje za prezime mora imati bar tri karaktera
+          </mat-error>
         </mat-form-field>
+       
         <mat-form-field>
           <input matInput   formControlName="username"   placeholder="Korisnicko ime">
+          <mat-error   *ngIf="Username?.touched && Username?.errors?.['required']&& success==false" >
+            Polje za korisnicko ime je obavezno
+          </mat-error>
+          <mat-error   *ngIf="Username?.touched && Username?.errors?.['minlength']&& success==false" >
+            Polje za korisnicko ime mora imati bar tri karaktera
+          </mat-error>
         </mat-form-field>
+        
         <mat-form-field>
           <input matInput   formControlName="password"   placeholder="Lozinka">
+          <mat-error   *ngIf="Password?.touched && Password?.errors?.['required'] && success==false" >
+            Polje za lozinku je obavezno
+          </mat-error>
+          <mat-error   *ngIf="Password?.touched && Password?.errors?.['minlength'] && success==false" >
+            Polje za lozinku mora imati bar osam karaktera
+          </mat-error>
         </mat-form-field>
+        <mat-form-field>
+          <input matInput   formControlName="confirmPassword"   placeholder="Potvrdite lozinku">
+          
+          <mat-error   *ngIf=" ConfirmPassword?.touched && isEqual()==false && success==false" >
+            Lozinka se ne polapa {{isEqual()}}
+          </mat-error>
+        </mat-form-field>
+       
   <mat-form-field>
     <mat-label>Izaberite ulogu</mat-label>
     <select formControlName="role" matNativeControl required>
@@ -26,9 +59,16 @@
     <option [ngValue]="'menadzer'" >Mendzer</option>
     <option [ngValue]="'navijac'" >Navijac</option>
     </select>
+    <mat-error   *ngIf="Role?.touched && Role?.errors?.['required'] && success==false" >
+      Polje za ulogu je obavezno
+    </mat-error>
   </mat-form-field>
 
         <button mat-raised-button color="primary" (click)="register()">Registrujte se</button>
+        
+          <p  *ngIf="success==true"  style="color:green">Uspesno ste se registrovali</p>
+      
+          <p  *ngIf="alredyExist==true"  style="color:red">Izaberite drugo korisnicko ime</p>
       </form>
     </mat-card-content>
   </mat-card>

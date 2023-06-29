@@ -25,11 +25,12 @@ uloga:any;
 
 form=new FormGroup(
   {
-name:new FormControl('',[Validators.required]),
-surname:new FormControl('',[Validators.required]),
-username:new FormControl('',[Validators.required]),
-password:new FormControl('',[Validators.required]),
-role:new FormControl('')
+name:new FormControl('',[Validators.required,Validators.minLength(3)]),
+surname:new FormControl('',[Validators.required,Validators.minLength(3)]),
+username:new FormControl('',[Validators.required,Validators.minLength(3)]),
+password:new FormControl('',[Validators.required,Validators.minLength(8)]),
+confirmPassword:new FormControl('',[Validators.required,Validators.minLength(8)]),
+role:new FormControl('',[Validators.required])
 
   }
 )
@@ -59,6 +60,11 @@ get Password()
   return  this.form.get('password')
 }
 
+get ConfirmPassword()
+{
+  return  this.form.get('confirmPassword')
+}
+
 
 get Role()
 {
@@ -66,35 +72,61 @@ get Role()
 }
 
 
+isEqual()
+{
+if(this.Password?.value!.toString()!=this.ConfirmPassword?.value?.toString())
+{
+return false
+}
+return true
+
+}
+success:boolean=false
+alredyExist:boolean=false
 register()
 {
-console.log(this.Password?.value)
+console.log(this.form)
 this.korisnik={
     ime: this.Name?.value!,
     prezime:this.Surname?.value!,
     korisnickoIme:this.Username?.value!,
     lozinka:this.Password?.value!
+    
 }
-
+console.log(this.form.status)
 this.uloga=this.Role?.value
+if(this.form.status.toString()=="VALID")
+{
+  this.prijavaserv.register(this.korisnik,this.uloga).subscribe(
 
-this.prijavaserv.register(this.korisnik,this.uloga).subscribe(
-
-  res=>{console.log(res)}
-)
-
-
-
- /* if(this.uloga=='admin'){
-    this.prijavaserv.registerAdmin(this.korisnik).subscribe()
-  }
-else if(this.uloga=='menadzer'){
-  this.prijavaserv.registerManager(this.korisnik).subscribe()
+    res=>{
+      
+      if(res!="ne")
+      {
+        console.log(res)
+        this.Name?.setValue(null)
+        this.Surname?.setValue("")
+        this.Password?.setValue("")
+        this.Username?.setValue("")
+        this.Role?.setValue("")
+        this.success=true
+      }
+      else
+      {
+       this.alredyExist=true
+      }
+      
+      
+    
+    
+    
+    }
+  )
   
 }
-else if(this.uloga=='navijac'){
-  this.prijavaserv.registerMember(this.korisnik).subscribe()
-}*/
+
+
+
 }
 
 }

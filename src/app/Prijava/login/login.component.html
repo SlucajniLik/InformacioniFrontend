@@ -8,13 +8,26 @@
         </mat-error>-->
         <mat-form-field>
           <input matInput placeholder="Korisnicko ime"     formControlName="username" >
-         
+          <mat-error   *ngIf="Username?.touched && Username?.errors?.['required']">
+            Unesite korisnicko ime
+          </mat-error>
         </mat-form-field>
         <mat-form-field>
           <input matInput type="password"   formControlName="password" placeholder="Lozinka">
-         
+          <mat-error  *ngIf="Password?.touched && Password?.errors?.['required']">
+            Unesite lozinku
+          </mat-error>
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="login()">Ulogujte se</button>
+        <mat-error  *ngIf="nonAllow==true">
+          Sacekajte da vas admin odobri
+        </mat-error>
+        <mat-error  *ngIf="notExist==true">
+          Registrujte se da biste se ulogovali
+        </mat-error>
+        <mat-error  *ngIf="wrongPassword==true">
+          Unesli ste pogresnu lozinku
+        </mat-error>
       </form>
     </mat-card-content>
   </mat-card>

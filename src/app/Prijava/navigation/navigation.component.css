@@ -1,0 +1,12 @@
+.r
+{
+    display: flex;
+    justify-content:flex-end;
+   
+}
+
+.p
+{
+    display: flex;
+    justify-content:space-between;
+}

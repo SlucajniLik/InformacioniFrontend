@@ -1,12 +1,12 @@
   
 
 <mat-toolbar color="primary"      *ngIf="isLogedIn()==null" >
-  <mat-toolbar-row>
+  <mat-toolbar-row   class="r">
    
     <span class="menu-spacer"></span>
-    <div>
+    <div   >
       <a  mat-button   [routerLink]="['']"     routerLinkActive="active">Logovanje</a>
-      <a  mat-button   [routerLink]="['register']" routerLinkActive="active">Registracija</a>
+      <a  mat-button  [routerLink]="['register']" routerLinkActive="active">Registracija</a>
 
     </div>
   </mat-toolbar-row>
@@ -18,9 +18,9 @@
 
 
 <mat-toolbar color="primary"      *ngIf="isLogedRole()=='menadzer'" >
-  <mat-toolbar-row>
+  <mat-toolbar-row  class="p">
    
-    <span class="menu-spacer"></span>
+    
     <div>
       <a  mat-button   [routerLink]="['dodajIgrace']" routerLinkActive="active"  >Dodaj igrace </a>
         <a  mat-button   [routerLink]="['listaIgraca']" routerLinkActive="active" >Lista Igraca</a>
@@ -28,9 +28,10 @@
         <a  mat-button   [routerLink]="['drugaPostava']" routerLinkActive="active" >Na klupi</a>
        <!-- <a     [routerLink]="['listaTimova']" routerLinkActive="active" *ngIf="isLogedRole()=='menadzer'">Lista timovaMenadzer</a>-->
         <!--<a     [routerLink]="['menadzerTimovi']" routerLinkActive="active" *ngIf="isLogedRole()=='menadzer'">Timovi Menadzera</a>-->
-        <a  mat-button   (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>
+        
 
     </div>
+    <a  mat-button  (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>
   </mat-toolbar-row>
 
  
@@ -41,9 +42,9 @@
 
 
 <mat-toolbar color="primary"      *ngIf="isLogedRole()=='admin'" >
-  <mat-toolbar-row>
+  <mat-toolbar-row   class="p">
    
-    <span class="menu-spacer"></span>
+   
     <div>
       <a  mat-button   [routerLink]="['dodajTimove']" routerLinkActive="active"   >Dodaj timove</a>
       <a  mat-button   [routerLink]="['listaTimova']" routerLinkActive="active"   >Lista timov</a>
@@ -53,8 +54,9 @@
       <a   mat-button  [routerLink]="['dozvoliNavijace']" routerLinkActive="active"    >Lista navijaca</a>
       <a   mat-button  [routerLink]="['navijaciUplate']" routerLinkActive="active"    >Uplate Navijaca</a>
       <!-- <a     [routerLink]="['rezultatiTimova2']" routerLinkActive="active"  *ngIf="isLogedRole()=='admin'" >Lista rezultata22222</a>-->
-      <a  mat-button  (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>
+      
     </div>
+    <a  mat-button  (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>
   </mat-toolbar-row>
 
  
@@ -64,15 +66,16 @@
 
 
 <mat-toolbar color="primary"      *ngIf="isLogedRole()=='navijac'" >
-  <mat-toolbar-row>
+  <mat-toolbar-row   class="p">
    
-    <span class="menu-spacer"></span>
+   
     <div>
       <a  mat-button   [routerLink]="['pregledRezultata']" routerLinkActive="active">Sezonski rezultati</a>
 <a   mat-button  [routerLink]="['podaciNavijaca']" routerLinkActive="active">Podaci navijaca</a>
-<a  mat-button   (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>
+
 
     </div>
+    <a  mat-button   (click)="logOut()"  *ngIf="isLogedIn()!=null" >Odjavi se</a>
   </mat-toolbar-row>
 
  
