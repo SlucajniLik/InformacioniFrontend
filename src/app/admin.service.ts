@@ -4,14 +4,15 @@ import { Utakmica2 } from './Interfejsi/Utakmica2';
 import { Tim } from './Interfejsi/Tim';
 import { Utakmica } from './Interfejsi/Utakmica';
 import { map } from 'rxjs';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private http:HttpClient) { }
-  url="https://localhost:7166/"
+  constructor(private http:HttpClient,private sharService:SharedService) { }
+  url=this.sharService.getUrl()
   token=localStorage.getItem("token");
     addTeams(team:Tim)
     {

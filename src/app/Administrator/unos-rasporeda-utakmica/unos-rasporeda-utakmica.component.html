@@ -42,14 +42,12 @@
 <mat-error   *ngIf="Tim2?.touched && Tim2?.errors?.['required']&& success==false" >
   Izaberite drugi  tim
 </mat-error>
-
-<mat-error  *ngIf="allow==false">
-  Tim je zauzet tog datuma
-</mat-error>
-
-
 </mat-form-field>
 <button  mat-raised-button color="primary" (click)="onClick()"   >Unesi</button>
+
+<p   style="color: red;" *ngIf="allow==false">
+  Odabrani timovi ne mogu igrati ovog datuma
+</p>
 <p  style="color: green;"  *ngIf="success==true" >Uspesno ste uneli podatke</p>
 <p  style="color: red;" *ngIf="check1==true"  >Izaberite dva razlicita tima</p>
       </form>

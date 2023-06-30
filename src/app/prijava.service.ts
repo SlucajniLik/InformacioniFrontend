@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Korisnik } from './Interfejsi/Korisnik';
 import { LoginKorisnik } from './Interfejsi/LoginKorisnik ';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrijavaService {
 
-  constructor(private http:HttpClient) { }
-url="https://localhost:7166/"
+  constructor(private http:HttpClient,private sharedServ:SharedService) { }
+url=this.sharedServ.getUrl()
 
 
 register(user:Korisnik,type:string)

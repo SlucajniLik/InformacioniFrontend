@@ -16,6 +16,13 @@ constructor(private admServ:AdminService,private route:ActivatedRoute)
 {
  
 }
+
+
+
+check()
+{
+  this.success=false
+}
 paymentMember:any={
   ime:'',
   prezime:'',

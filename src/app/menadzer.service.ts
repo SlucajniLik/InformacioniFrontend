@@ -1,14 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Igrac } from './Interfejsi/Igrac';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenadzerService {
 
-  constructor(private http:HttpClient) { }
-url="https://localhost:7166/"
+  constructor(private http:HttpClient,private sharServ:SharedService) { }
+url=this.sharServ.getUrl()
 token=localStorage.getItem("token");
   addPlayer(player:Igrac)
   {
