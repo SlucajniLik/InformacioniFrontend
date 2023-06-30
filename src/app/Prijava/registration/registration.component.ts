@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Korisnik } from 'src/app/Interfejsi/Korisnik';
 import { PrijavaService } from 'src/app/prijava.service';
@@ -8,7 +8,7 @@ import { PrijavaService } from 'src/app/prijava.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
 uloga:any;
   korisnik?:Korisnik
   
@@ -19,6 +19,10 @@ uloga:any;
 
     
 
+  }
+  ngOnInit(): void {
+    this.password = 'password';
+    this.password2 = 'password';
   }
 
 
@@ -70,8 +74,43 @@ get Role()
 {
   return  this.form.get('role')
 }
+change()
+{
+  this.success=false
+  this.alredyExist=false
+}
+
+password:any;
+
+show = false;
+
+onClick() {
+  if (this.password === 'password') {
+    this.password = 'text';
+    this.show = true;
+  } else {
+    this.password = 'password';
+    this.show = false;
+  }
+}
 
 
+
+
+password2:any;
+
+show2 = false;
+
+
+onClick2() {
+  if (this.password2 === 'password') {
+    this.password2 = 'text';
+    this.show2 = true;
+  } else {
+    this.password2 = 'password';
+    this.show2 = false;
+  }
+}
 isEqual()
 {
 if(this.Password?.value!.toString()!=this.ConfirmPassword?.value?.toString())
@@ -107,6 +146,7 @@ if(this.form.status.toString()=="VALID")
         this.Name?.setValue(null)
         this.Surname?.setValue("")
         this.Password?.setValue("")
+        this.ConfirmPassword?.setValue("")
         this.Username?.setValue("")
         this.Role?.setValue("")
         this.success=true

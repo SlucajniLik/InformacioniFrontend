@@ -1,6 +1,5 @@
-<div     (click)="dropTable()"  >
-  a
-<table mat-table [dataSource]="utakmicaTim" class="mat-elevation-z8"  *ngIf="checkk==true">
+
+<table mat-table [dataSource]="utakmicaTim" class="mat-elevation-z8"  >
 
     <ng-container matColumnDef="tim1">
       <th mat-header-cell *matHeaderCellDef>Tim1</th>
@@ -55,4 +54,4 @@
     <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
   </table>
-  </div>
+  

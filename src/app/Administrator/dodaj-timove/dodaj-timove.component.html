@@ -2,7 +2,7 @@
      
   <mat-card>
     <mat-card-content>
-      <form [formGroup]="form"  >
+      <form [formGroup]="form"  (click)="change()" >
         <h2>Dodajte timove</h2>
       
         <mat-form-field>
@@ -64,7 +64,7 @@
           </mat-form-field>
         
   <mat-form-field>
-    <mat-label>Izaberite ulogu</mat-label>
+    <mat-label>Izaberite menadzera</mat-label>
     <select formControlName="idMenadzera"  matNativeControl required>
 
       <option   *ngFor="let manager of managers" [ngValue]="manager.id"  >{{manager.ime+" "+manager.prezime}}</option>

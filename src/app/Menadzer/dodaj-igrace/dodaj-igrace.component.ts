@@ -38,7 +38,7 @@ pozicija:new FormControl('',[Validators.required])
 
 
 myTeam:any
-
+rest:any=false
 constructor(private menService:MenadzerService,private route:ActivatedRoute,private prijavaServ:PrijavaService)
 {}
   ngOnInit(): void {
@@ -53,7 +53,10 @@ constructor(private menService:MenadzerService,private route:ActivatedRoute,priv
       this.menService.getManagerTeam(ress.userId).subscribe(
         res=>{this.myTeam=res
        
-       
+      if(res==null)
+      {
+         this.rest=true
+      }
        }
      
          )
@@ -66,6 +69,15 @@ pozicije:any[]=["Golman ","Centralni bek","Levi bek","Desni bek"
 ]
 success:any=false
 mess:any=false
+
+
+change()
+{
+
+
+  this.success=false
+  this.mess=false
+}
 addPlayer()
 {
 console.log(this.route.snapshot.paramMap.get("id")+"ffffffffffffffs")
@@ -90,7 +102,7 @@ if(this.form.status.toString()=="VALID")
 this.menService.addPlayer(this.player).subscribe(
   res=>{console.log(res)
 
-    if(res=="no")
+    if(res==null)
     {
            this.mess=true
     }

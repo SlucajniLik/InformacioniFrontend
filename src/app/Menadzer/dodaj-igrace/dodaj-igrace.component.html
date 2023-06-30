@@ -1,7 +1,7 @@
           
-<mat-card>
+<mat-card   *ngIf="rest!=true"   >
   <mat-card-content>
-    <form [formGroup]="form"  >
+    <form [formGroup]="form"  (click)="change()" >
       <h2>Unesite podatke  o igracu</h2>
       <mat-form-field>
         <input matInput  placeholder="Ime igraca" formControlName="name">
@@ -41,9 +41,10 @@
 </mat-form-field>
 <button mat-raised-button color="primary" (click)="addPlayer()"  >Unesite igraca</button>
 <mat-error  *ngIf="mess==true">
-  Unesite poziciju igraca
+  Igrac vec postoji u bazi
  </mat-error>
 <p style="color: green;" *ngIf="success==true" >Uspesno ste uneli podatke</p>
     </form>
   </mat-card-content>
 </mat-card>
+<h1  *ngIf="rest==true"  >Sacekajte da vam admin odabere tim</h1>

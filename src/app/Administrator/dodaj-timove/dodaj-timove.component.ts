@@ -116,13 +116,23 @@ alredyExist:boolean=false;
 success:boolean=false
 
 checkImg:boolean=false
-async addTeams()
-{
 
+
+
+
+change()
+{
+  this.alredyExist=false
+  this.success=false
+}
+ addTeams()
+{
+  if(this.form.status.toString()=="VALID")
+  {
   this.admService.uploadImage(this.selectedFile).subscribe(
     response => {
       console.log(response);
- if(response=="no")
+ if(response==null)
  {
 this.alredyExist=true
 
@@ -154,8 +164,7 @@ else
 
 
 
-      if(this.form.status.toString()=="VALID")
-      {
+      
       this.admService.addTeams(this.team).subscribe(
         res=>{console.log(res)
         
@@ -168,7 +177,7 @@ else
         },
         error=>{console.log(error)}
       )
-      }
+      
       }
 
     },
@@ -178,19 +187,7 @@ else
     }
   );
 
-
-
-  
-
-
-
-
-
-
-
-
-
-
+  }
 
 }
 

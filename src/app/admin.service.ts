@@ -68,9 +68,9 @@ export class AdminService {
 
 
 
-getMatch()
+getMatch(year:number)
 {
-return this.http.get(this.url+"getMatches",{
+return this.http.get(this.url+"getMatches/"+year,{
 
   headers: {
     'Access-Control-Allow-Origin': '*',
@@ -261,6 +261,18 @@ return this.http.get(this.url+"gettMemebers",{
 }
 
 
+getMatchesDates()
+{
+return this.http.get(this.url+"getMatchesDates",{
+
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Authorization: 'bearer ' + localStorage.getItem("token"),
+
+  },
+
+},)
+}
 
 
 

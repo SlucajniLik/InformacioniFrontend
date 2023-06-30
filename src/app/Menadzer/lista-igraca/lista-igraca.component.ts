@@ -22,33 +22,48 @@ constructor(private router:Router,  private menService:MenadzerService,private r
 myTeam:any
 playersCountLineUp:any
 playersCountBench:any
+rest:any=false
   ngOnInit(): void {
 
     this.prijavaServ.getInformation().subscribe(
 
       (ress:any)=>{
-  
+        console.log(ress.userId+"ddd")
         this.menService.getManagerTeam(ress.userId).subscribe(
           res=>{this.myTeam=res
+            console.log(res+"aaa")
+              if(res!=null)
+              { this.menService.getPlayers(this.myTeam.id).subscribe(
+                (res:any)=>{this.players=res
+          
+                }
+              )
+              this.menService.getLineUpPlayers(true,this.myTeam.id).subscribe(
+                (res:any)=>{this.playersCountLineUp=res.length
+  
+                  console.table(this.playersCountLineUp)
+          
+                }
+              )
+  
+              this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
+                (res:any)=>{this.playersCountBench=res.length
+          
+                }
+              )}
+              else
+                {
 
-            this.menService.getPlayers(this.myTeam.id).subscribe(
-              (res:any)=>{this.players=res
-        
-              }
-            )
-            this.menService.getLineUpPlayers(true,this.myTeam.id).subscribe(
-              (res:any)=>{this.playersCountLineUp=res.length
+this.rest=true
 
-                console.table(this.playersCountLineUp)
-        
-              }
-            )
+                }
 
-            this.menService.getLineUpPlayers(false,this.myTeam.id).subscribe(
-              (res:any)=>{this.playersCountBench=res.length
-        
-              }
-            )
+
+
+
+
+
+           
 
 
 

@@ -15,7 +15,7 @@ export class PrvaPostavaComponent {
   
   
   }
-  
+  rest:any=false
   
     players!:any[]
     displayColumn=['ime','datumRodjenja','pozicija','id','id2']
@@ -30,7 +30,8 @@ export class PrvaPostavaComponent {
     
           this.menService.getManagerTeam(ress.userId).subscribe(
             res=>{this.myTeam=res
-  
+              if(res!=null)
+              {
               this.menService.getLineUpPlayers(true,this.myTeam.id).subscribe(
                 (res:any)=>{this.players=res
 
@@ -44,7 +45,12 @@ export class PrvaPostavaComponent {
           
                 }
               )
-           
+              }
+              else
+              {
+
+                this.rest=true
+              }
            }
          
              )

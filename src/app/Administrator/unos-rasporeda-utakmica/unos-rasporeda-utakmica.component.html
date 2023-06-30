@@ -47,9 +47,10 @@
   Tim je zauzet tog datuma
 </mat-error>
 
-<p  style="color: green;"  *ngIf="success==true" >Uspesno ste uneli podatke</p>
+
 </mat-form-field>
 <button  mat-raised-button color="primary" (click)="onClick()"   >Unesi</button>
+<p  style="color: green;"  *ngIf="success==true" >Uspesno ste uneli podatke</p>
 <p  style="color: red;" *ngIf="check1==true"  >Izaberite dva razlicita tima</p>
       </form>
     </mat-card-content>

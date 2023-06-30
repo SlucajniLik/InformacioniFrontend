@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { Utakmica } from 'src/app/Interfejsi/Utakmica';
 import { AdminService } from 'src/app/admin.service';
 
@@ -87,7 +88,7 @@ onClick()
 {
 this.utakmica={
  
-    datum:this.Datum?.value!,
+    datum:moment(this.Datum?.value!).format("YYYY-MM-DD"),
     vreme: this.Vreme?.value!,
     rezultat: '0',
     brZutihKartona: '0',

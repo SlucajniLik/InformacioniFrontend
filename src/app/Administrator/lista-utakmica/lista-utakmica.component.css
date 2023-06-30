@@ -9,4 +9,9 @@ table {
     background-color: #04AA6D;
     text-align: left;
   }
+
+  th,td
+  {
+    text-align: center;
+  }
   

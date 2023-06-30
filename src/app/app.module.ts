@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DodajTimoveComponent } from './Administrator/dodaj-timove/dodaj-timove.component';
 import { DodajIgraceComponent } from './Menadzer/dodaj-igrace/dodaj-igrace.component';
 import { PregledRezultataComponent } from './Navijac/pregled-rezultata/pregled-rezultata.component';
-import { ListaTimovaComponent } from './Menadzer/lista-timova/lista-timova.component';
+
 import { ListaIgracaComponent } from './Menadzer/lista-igraca/lista-igraca.component';
 import { UnosRasporedaUtakmicaComponent } from './Administrator/unos-rasporeda-utakmica/unos-rasporeda-utakmica.component';
 import { ListaUtakmicaComponent } from './Administrator/lista-utakmica/lista-utakmica.component';
@@ -36,6 +36,7 @@ import { PodaciComponent } from './Navijac/podaci/podaci.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AngularMaterialModule } from './angular-material.module';
+import { PregledUtakmicaComponent } from './Administrator/pregled-utakmica/pregled-utakmica.component';
 
 
 
@@ -52,7 +53,7 @@ import { AngularMaterialModule } from './angular-material.module';
     DodajTimoveComponent,
     DodajIgraceComponent,
     PregledRezultataComponent,
-    ListaTimovaComponent,
+ 
     ListaIgracaComponent,
     UnosRasporedaUtakmicaComponent,
     ListaUtakmicaComponent,
@@ -67,7 +68,7 @@ import { AngularMaterialModule } from './angular-material.module';
  NavijaciUplateComponent,
  UplateComponent,
  OdigraneUtakmiceComponent,
- PodaciComponent
+ PodaciComponent,PregledUtakmicaComponent
 
 
   ],
@@ -85,12 +86,13 @@ import { AngularMaterialModule } from './angular-material.module';
      // { path: 'listaIgraca', component: ListaIgracaComponent,canActivate:[AdminGuard] },
       { path: 'dodajTimove', component: DodajTimoveComponent,canActivate:[AdminGuard]  },
       { path: 'dodajRaspored', component: UnosRasporedaUtakmicaComponent,canActivate:[AdminGuard]  },
-      { path: 'pregledRaspored', component: ListaUtakmicaComponent ,canActivate:[AdminGuard] },
+      { path: 'pregledRaspored', component: PregledUtakmicaComponent ,canActivate:[AdminGuard] },
+      { path: 'pregledRasporedDva/:year', component: ListaUtakmicaComponent ,canActivate:[AdminGuard] },
       { path: 'promeniPodatkeUtakmice/:id/:idTim1/:idTim2', component: IzmeniPodatkeUtakmiceComponent ,canActivate:[AdminGuard] },
       { path: 'rezultatiTimova', component: ListaRezultataComponent,canActivate:[AdminGuard]  },
      
       { path: 'rezultatiTimova2/:id', component: ListaRezultata2Component,canActivate:[AdminGuard]  },
-      { path: 'listaTimova', component: ListaTimovaComponent,canActivate:[AdminGuard] },
+      
       { path: 'dozvoliNavijace', component:DozvoliNavijaceComponent ,canActivate:[AdminGuard] },
       { path: 'navijaciUplate', component:NavijaciUplateComponent ,canActivate:[AdminGuard] },
       { path: 'uplate/:id', component:UplateComponent ,canActivate:[AdminGuard] },

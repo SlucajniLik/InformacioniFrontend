@@ -1,5 +1,5 @@
 <p  style="color: red;" *ngIf="err2==true" >Na klupi ne moze biti vise od 5 igraca</p>
-    <table mat-table [dataSource]="players" class="mat-elevation-z8">
+    <table mat-table [dataSource]="players"  *ngIf="rest!=true"  class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -46,4 +46,4 @@
       </table>
     
     
-  
+      <h1   *ngIf="rest==true"  >Sacekajte da vam admin odabere tim</h1>

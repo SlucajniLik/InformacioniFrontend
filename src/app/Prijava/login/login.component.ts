@@ -47,6 +47,15 @@ resp?:any
 wrongPassword:boolean=false
 nonAllow:boolean=false
 notExist:boolean=false
+
+
+
+change()
+{
+  this.notExist=false
+  this.nonAllow=false
+  this.wrongPassword=false
+}
 login()
 {
 
@@ -87,7 +96,8 @@ console.log(this.resp+"aaaa")
      }
      else if(res)
      {
-      if(this.form.status.toString()=="VALID")
+      if(this.form.status.toString()=="VALID" &&this.notExist==false&&this.nonAllow==false &&
+      this.wrongPassword==false)
       {
           localStorage.setItem("token",res)   
             

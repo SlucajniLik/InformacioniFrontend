@@ -1,0 +1,16 @@
+
+
+<div  class="fl">
+  <div   class="f2">
+<mat-card  *ngFor="let ut of utakmicaTim" (click)="Matches(ut)"    >
+    <img
+      mat-card-image
+      [src]="logo"
+      
+    />
+    <mat-card-content>
+        <h2 style="text-align: center;">Sezona:{{ut}}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>
+</div>
