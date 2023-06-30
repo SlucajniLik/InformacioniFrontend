@@ -57,6 +57,7 @@ constructor(private menService:MenadzerService,private route:ActivatedRoute,priv
       {
          this.rest=true
       }
+     
        }
      
          )

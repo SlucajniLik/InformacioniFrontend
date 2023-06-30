@@ -8,5 +8,17 @@ mat-card {
     display: block;
   }
 
-  
+img
+{
+    height: 8rem;
+}
+
+.fl
+{
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 1%;
+    height: 100%;
+}
 

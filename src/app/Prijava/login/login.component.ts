@@ -86,6 +86,11 @@ console.log(this.resp+"aaaa")
       this.wrongPassword=false
        this.nonAllow=true
         console.log("Jos uvek niste odobreni")
+
+
+
+        this.Password?.setValue("")
+        this.Username?.setValue("")
      }
      else if(res=="nel")
      {
@@ -93,6 +98,8 @@ console.log(this.resp+"aaaa")
       this.notExist=true
       this.nonAllow=false
       this.wrongPassword=false
+      this.Password?.setValue("")
+      this.Username?.setValue("")
      }
      else if(res)
      {

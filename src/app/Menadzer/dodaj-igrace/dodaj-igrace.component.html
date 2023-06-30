@@ -1,7 +1,15 @@
           
+
 <mat-card   *ngIf="rest!=true"   >
   <mat-card-content>
+    <img
+      mat-card-image
+      [src]="myTeam.logo"
+      alt="Photo of a Shiba Inu"
+    />
+    <h2>Naziv tima:{{myTeam.naziv}}</h2>
     <form [formGroup]="form"  (click)="change()" >
+     
       <h2>Unesite podatke  o igracu</h2>
       <mat-form-field>
         <input matInput  placeholder="Ime igraca" formControlName="name">
